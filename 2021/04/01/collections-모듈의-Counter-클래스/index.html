@@ -23,16 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="HyunJungC Blog">
-<meta property="og:url" content="https://hyunjungc.dev.github.io/archives/2021/03/index.html">
+<meta name="description" content="collections 모듈파이썬의 범용 내정 컨테이너 dict, list, set 및 tuple에 대한 대안을 제공하는 특수 컨테이너 데이터형을 구현한다.  namedtuple() - 이름 붙은 필드를 갖는 튜플 서브 클래스를 만들기 위한 팩토리 함수 deque - 양쪽 끝에서 빠르게 추가와 삭제를 할 수 있는 리스트류 컨테이너 ChainMap - 여러 매">
+<meta property="og:type" content="article">
+<meta property="og:title" content="collections 모듈의 Counter 클래스">
+<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/index.html">
 <meta property="og:site_name" content="HyunJungC Blog">
+<meta property="og:description" content="collections 모듈파이썬의 범용 내정 컨테이너 dict, list, set 및 tuple에 대한 대안을 제공하는 특수 컨테이너 데이터형을 구현한다.  namedtuple() - 이름 붙은 필드를 갖는 튜플 서브 클래스를 만들기 위한 팩토리 함수 deque - 양쪽 끝에서 빠르게 추가와 삭제를 할 수 있는 리스트류 컨테이너 ChainMap - 여러 매">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-01T12:04:22.000Z">
+<meta property="article:modified_time" content="2021-04-01T12:17:35.204Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hyunjungc.dev.github.io/archives/2021/03/">
+<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/">
 
 
 <script class="page-configurations">
@@ -40,11 +44,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
-<title>Archive | HyunJungC Blog</title>
+<title>collections 모듈의 Counter 클래스 | HyunJungC Blog</title>
   
 
 
@@ -130,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -143,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#collections-%EB%AA%A8%EB%93%88"><span class="nav-number">1.</span> <span class="nav-text">collections 모듈</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -189,89 +194,106 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 5 posts in total. Keep on posting.</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          collections 모듈의 Counter 클래스
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="Created: 2021-04-01 21:04:22 / Modified: 21:17:35" itemprop="dateCreated datePublished" datetime="2021-04-01T21:04:22+09:00">2021-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-python/" itemprop="url" rel="index"><span itemprop="name">TIL/python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="collections-모듈"><a href="#collections-모듈" class="headerlink" title="collections 모듈"></a>collections 모듈</h1><p>파이썬의 범용 내정 컨테이너 dict, list, set 및 tuple에 대한 대안을 제공하는 특수 컨테이너 데이터형을 구현한다.</p>
+<ul>
+<li>namedtuple() - 이름 붙은 필드를 갖는 튜플 서브 클래스를 만들기 위한 팩토리 함수</li>
+<li>deque - 양쪽 끝에서 빠르게 추가와 삭제를 할 수 있는 리스트류 컨테이너</li>
+<li>ChainMap - 여러 매핑의 단일 뷰를 만드는 딕셔너리류 클래스</li>
+<li>Counter - 해시 가능한 객체를 세는 데 사용하는 딕셔너리 서브 클래스</li>
+<li>OrderedDick - 항목이 추가된 순서를 기억하는 딕셔너리 서브 클래스</li>
+<li>defaultdict - 누락된 값을 제공하기 위해 팩터리 함수를 호출하는 딕셔너리 서브 클래스</li>
+<li>UserDict - 더 쉬운 딕셔너리 서브 클래싱을 위해 딕셔너리 객체를 감싸는 래퍼</li>
+<li>UserString - 더 쉬운 문자열 서브 클래싱을 위해 문자열 객체를 감싸는 래퍼 </li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-31T21:20:12+09:00"
-              content="2021-03-31">
-          03-31
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/31/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-sub/" itemprop="url">
-            <span itemprop="name">정규표현식 - re.sub()</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/31/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-sub/" rel="prev" title="정규표현식 - re.sub()">
+                  <i class="fa fa-chevron-left"></i> 정규표현식 - re.sub()
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/01/%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98/" rel="next" title="완주하지 못한 선수">
+                  완주하지 못한 선수 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-31T11:20:08+09:00"
-              content="2021-03-31">
-          03-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/31/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-31T11:10:02+09:00"
-              content="2021-03-31">
-          03-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/31/1%EC%B0%A8-%EC%BA%90%EC%8B%9C/" itemprop="url">
-            <span itemprop="name">1차-캐시</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 
 <script>
