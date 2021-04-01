@@ -31,7 +31,7 @@
 <meta property="og:description" content="TIL&#x2F;pythonhttps:&#x2F;&#x2F;hyunjungc-dev.github.io&#x2F;2021&#x2F;04&#x2F;01&#x2F;collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4&#x2F;  이 문제의 경우, 프로그래머스의 다른 사람의 풀이를 보니 collections 모듈의 Counter()를 이용하면, 더 쉽">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-01T12:18:56.000Z">
-<meta property="article:modified_time" content="2021-04-01T12:24:56.324Z">
+<meta property="article:modified_time" content="2021-04-01T12:32:35.223Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -134,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -147,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TIL-python"><span class="nav-number">1.</span> <span class="nav-text">TIL&#x2F;python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#https-hyunjungc-dev-github-io-2021-04-01-collections-EB-AA-A8-EB-93-88-EC-9D-98-Counter-ED-81-B4-EB-9E-98-EC-8A-A4"><span class="nav-number">2.</span> <span class="nav-text">https:&#x2F;&#x2F;hyunjungc-dev.github.io&#x2F;2021&#x2F;04&#x2F;01&#x2F;collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4&#x2F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%9D%B4-%EB%AC%B8%EC%A0%9C%EC%9D%98-%EA%B2%BD%EC%9A%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EC%9D%98-%EB%8B%A4%EB%A5%B8-%EC%82%AC%EB%9E%8C%EC%9D%98-%ED%92%80%EC%9D%B4%EB%A5%BC-%EB%B3%B4%EB%8B%88-collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EB%A9%B4-%EB%8D%94-%EC%89%BD%EA%B2%8C-%ED%92%80-%EC%88%98-%EC%9E%88%EC%97%88%EB%8B%A4"><span class="nav-number">3.</span> <span class="nav-text">이 문제의 경우, 프로그래머스의 다른 사람의 풀이를 보니 collections 모듈의 Counter()를 이용하면, 더 쉽게 풀 수 있었다.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%EB%8A%94-%EC%9E%98-%EB%AA%B0%EB%9D%BC%EC%84%9C-%EC%9C%84%EC%9D%98-TIL-python-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EC%95%88%EC%97%90-%EA%B3%B5%EB%B6%80%ED%95%B4%EC%84%9C-%EC%A0%95%EB%A6%AC%ED%96%88%EB%8B%A4"><span class="nav-number">4.</span> <span class="nav-text">collections 모듈의 Counter()는 잘 몰라서 위의 TIL&#x2F;python 카테고리 안에 공부해서 정리했다.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Programmers-level-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">Programmers level 1</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98"><span class="nav-number">5.</span> <span class="nav-text">완주하지 못한 선수</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-participant-%EB%B0%B0%EC%97%B4%EA%B3%BC-completion-%EB%B0%B0%EC%97%B4%EC%9D%98-%EA%B4%80%EA%B3%84"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. participant 배열과 completion 배열의 관계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%EC%99%84%EC%A3%BC-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98%EB%8A%94-%ED%95%AD%EC%83%81-1%EB%AA%85"><span class="nav-number">5.0.2.</span> <span class="nav-text">2. 완주 못한 선수는 항상 1명</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,7 +230,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-01 21:18:56 / Modified: 21:24:56" itemprop="dateCreated datePublished" datetime="2021-04-01T21:18:56+09:00">2021-04-01</time>
+      <time title="Created: 2021-04-01 21:18:56 / Modified: 21:32:35" itemprop="dateCreated datePublished" datetime="2021-04-01T21:18:56+09:00">2021-04-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,11 +253,27 @@
     
     <div class="post-body" itemprop="articleBody">
         <blockquote>
-<p>TIL/python<br><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/">https://hyunjungc-dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/</a></p>
+<h1 id="TIL-python"><a href="#TIL-python" class="headerlink" title="TIL/python"></a>TIL/python</h1><h1 id="https-hyunjungc-dev-github-io-2021-04-01-collections-EB-AA-A8-EB-93-88-EC-9D-98-Counter-ED-81-B4-EB-9E-98-EC-8A-A4"><a href="#https-hyunjungc-dev-github-io-2021-04-01-collections-EB-AA-A8-EB-93-88-EC-9D-98-Counter-ED-81-B4-EB-9E-98-EC-8A-A4" class="headerlink" title="https://hyunjungc-dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/"></a><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/">https://hyunjungc-dev.github.io/2021/04/01/collections-%EB%AA%A8%EB%93%88%EC%9D%98-Counter-%ED%81%B4%EB%9E%98%EC%8A%A4/</a></h1></blockquote>
+<blockquote>
+<h1 id="이-문제의-경우-프로그래머스의-다른-사람의-풀이를-보니-collections-모듈의-Counter-를-이용하면-더-쉽게-풀-수-있었다"><a href="#이-문제의-경우-프로그래머스의-다른-사람의-풀이를-보니-collections-모듈의-Counter-를-이용하면-더-쉽게-풀-수-있었다" class="headerlink" title="이 문제의 경우, 프로그래머스의 다른 사람의 풀이를 보니 collections 모듈의 Counter()를 이용하면, 더 쉽게 풀 수 있었다."></a>이 문제의 경우, 프로그래머스의 다른 사람의 풀이를 보니 collections 모듈의 Counter()를 이용하면, 더 쉽게 풀 수 있었다.</h1><h1 id="collections-모듈의-Counter-는-잘-몰라서-위의-TIL-python-카테고리-안에-공부해서-정리했다"><a href="#collections-모듈의-Counter-는-잘-몰라서-위의-TIL-python-카테고리-안에-공부해서-정리했다" class="headerlink" title="collections 모듈의 Counter()는 잘 몰라서 위의 TIL/python 카테고리 안에 공부해서 정리했다."></a>collections 모듈의 Counter()는 잘 몰라서 위의 TIL/python 카테고리 안에 공부해서 정리했다.</h1></blockquote>
+<h3 id="Programmers-level-1"><a href="#Programmers-level-1" class="headerlink" title="Programmers level 1"></a>Programmers level 1</h3><h1 id="완주하지-못한-선수"><a href="#완주하지-못한-선수" class="headerlink" title="완주하지 못한 선수"></a>완주하지 못한 선수</h1><blockquote>
+<p>participant 배열과 completion 배열의 관계를 생각해야한다.</p>
 </blockquote>
-<p>이 문제의 경우, 프로그래머스의 다른 사람의 풀이를 보니 collections 모듈의 Counter()를 이용하면, 더 쉽게 풀 수 있었다.</p>
+<h3 id="1-participant-배열과-completion-배열의-관계"><a href="#1-participant-배열과-completion-배열의-관계" class="headerlink" title="1. participant 배열과 completion 배열의 관계"></a>1. participant 배열과 completion 배열의 관계</h3><ul>
+<li>participant에는 참여한 모든 선수들의 이름이 들어있고</li>
+<li>completion에는 완주한 선수들의 이름이 들어가 있다.</li>
+<li>이때, 둘 배열의 길이차는 항상 1이다.<h3 id="2-완주-못한-선수는-항상-1명"><a href="#2-완주-못한-선수는-항상-1명" class="headerlink" title="2. 완주 못한 선수는 항상 1명"></a>2. 완주 못한 선수는 항상 1명</h3></li>
+<li>각 배열을 순서대로 정렬했을 때, 일치하지 않는 인덱스의 선수가 완주하지 못한 선수가 된다.</li>
+</ul>
+<blockquote>
+<p>sort를 이용</p>
+</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">participant, completion</span>):</span></span><br><span class="line">    participant.sort()</span><br><span class="line">    completion.sort()</span><br><span class="line">     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(completion)):</span><br><span class="line">        <span class="keyword">if</span> participant[i] != completion[i]:</span><br><span class="line">            <span class="keyword">return</span> participant[i]</span><br><span class="line">    <span class="keyword">return</span> participant[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>collection 모듈의 Counter()를 이용<br> 프로그래머스 다른 사람의 풀이</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">participant, completion</span>):</span></span><br><span class="line">    answer = collections.Counter(participant) - collections.Counter(completion)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(answer.keys())[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
     </div>
 
