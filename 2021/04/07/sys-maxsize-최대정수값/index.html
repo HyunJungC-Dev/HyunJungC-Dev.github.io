@@ -23,15 +23,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 python3에서 만들 수 있는 최대 크기의 List이다. 일반적으로 32비트 플랫폼에서는 2^31 - 1 이고 64비트 플랫폼에서는 2^63 - 1 이다.   python3에서 int 자료형 정">
+<meta name="description" content="파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데best_sum &#x3D; -sys.maxsize 라고 선언하는 부분을 처음봐서sys.maxsize에 대해 찾아보고 정리하였다.  sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sys.maxsize - 최대정수값">
 <meta property="og:url" content="https://hyunjungc.dev.github.io/2021/04/07/sys-maxsize-%EC%B5%9C%EB%8C%80%EC%A0%95%EC%88%98%EA%B0%92/index.html">
 <meta property="og:site_name" content="HyunJungC Blog">
-<meta property="og:description" content="sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 python3에서 만들 수 있는 최대 크기의 List이다. 일반적으로 32비트 플랫폼에서는 2^31 - 1 이고 64비트 플랫폼에서는 2^63 - 1 이다.   python3에서 int 자료형 정">
+<meta property="og:description" content="파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데best_sum &#x3D; -sys.maxsize 라고 선언하는 부분을 처음봐서sys.maxsize에 대해 찾아보고 정리하였다.  sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 python">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-07T02:37:16.000Z">
-<meta property="article:modified_time" content="2021-04-07T04:07:03.530Z">
+<meta property="article:modified_time" content="2021-04-07T04:10:01.663Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -230,7 +230,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-07 11:37:16 / Modified: 13:07:03" itemprop="dateCreated datePublished" datetime="2021-04-07T11:37:16+09:00">2021-04-07</time>
+      <time title="Created: 2021-04-07 11:37:16 / Modified: 13:10:01" itemprop="dateCreated datePublished" datetime="2021-04-07T11:37:16+09:00">2021-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,7 +252,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="sys-maxsize"><a href="#sys-maxsize" class="headerlink" title="sys.maxsize"></a>sys.maxsize</h1><ul>
+        <blockquote>
+<p>파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데<br>best_sum = -sys.maxsize 라고 선언하는 부분을 처음봐서<br>sys.maxsize에 대해 찾아보고 정리하였다.</p>
+</blockquote>
+<h1 id="sys-maxsize"><a href="#sys-maxsize" class="headerlink" title="sys.maxsize"></a>sys.maxsize</h1><ul>
 <li>python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다.</li>
 <li>즉, 이 sys.maxsize 크기의 List가 python3에서 만들 수 있는 최대 크기의 List이다.</li>
 <li>일반적으로 32비트 플랫폼에서는 2^31 - 1 이고</li>
