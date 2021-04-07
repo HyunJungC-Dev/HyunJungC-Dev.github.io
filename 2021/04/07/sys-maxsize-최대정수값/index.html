@@ -31,7 +31,7 @@
 <meta property="og:description" content="sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 python3에서 만들 수 있는 최대 크기의 List이다. 일반적으로 32비트 플랫폼에서는 2^31 - 1 이고 64비트 플랫폼에서는 2^63 - 1 이다.   python3에서 int 자료형 정">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-07T02:37:16.000Z">
-<meta property="article:modified_time" content="2021-04-07T03:00:04.761Z">
+<meta property="article:modified_time" content="2021-04-07T04:07:03.530Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sys-maxsize"><span class="nav-number">1.</span> <span class="nav-text">sys.maxsize</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python3%EC%97%90%EC%84%9C-int-%EC%9E%90%EB%A3%8C%ED%98%95-%EC%A0%95%EC%88%98-%EC%B5%9C%EB%8C%80%EA%B0%92-%EC%B5%9C%EC%86%8C%EA%B0%92"><span class="nav-number">1.1.</span> <span class="nav-text">python3에서 int 자료형 정수 최대값, 최소값</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-%E2%80%98inf%E2%80%99-%EC%99%80%EC%9D%98-%EC%B0%A8%EC%9D%B4"><span class="nav-number">1.2.</span> <span class="nav-text">float(‘inf’) 와의 차이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%EC%96%91%EC%9D%98-%EB%AC%B4%ED%95%9C%EB%8C%80-%EA%B0%92%EA%B3%BC-%EC%9D%8C%EC%9D%98-%EB%AC%B4%ED%95%9C%EB%8C%80-%EA%B0%92"><span class="nav-number">1.3.</span> <span class="nav-text">float 자료형의 양의 무한대 값과 음의 무한대 값</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int-float-%E2%80%98inf%E2%80%99-%ED%98%B9%EC%9D%80-int-flost-%E2%80%98-inf%E2%80%99-%EB%8A%94-%EB%B6%88%EA%B0%80%ED%95%98%EB%8B%A4"><span class="nav-number">1.4.</span> <span class="nav-text">int(float(‘inf’)) 혹은 int(flost(‘-inf’)) 는 불가하다.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B0%B8%EA%B3%A0"><span class="nav-number">1.5.</span> <span class="nav-text">참고</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sys-maxsize"><span class="nav-number">1.</span> <span class="nav-text">sys.maxsize</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python3%EC%97%90%EC%84%9C-int-%EC%9E%90%EB%A3%8C%ED%98%95-%EC%A0%95%EC%88%98-%EC%B5%9C%EB%8C%80%EA%B0%92-%EC%B5%9C%EC%86%8C%EA%B0%92"><span class="nav-number">1.1.</span> <span class="nav-text">python3에서 int 자료형 정수 최대값, 최소값</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-%E2%80%98inf%E2%80%99-%EC%99%80%EC%9D%98-%EC%B0%A8%EC%9D%B4"><span class="nav-number">1.2.</span> <span class="nav-text">float(‘inf’) 와의 차이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%EC%96%91%EC%9D%98-%EB%AC%B4%ED%95%9C%EB%8C%80-%EA%B0%92%EA%B3%BC-%EC%9D%8C%EC%9D%98-%EB%AC%B4%ED%95%9C%EB%8C%80-%EA%B0%92"><span class="nav-number">1.3.</span> <span class="nav-text">float 자료형의 양의 무한대 값과 음의 무한대 값</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int-float-%E2%80%98inf%E2%80%99-%ED%98%B9%EC%9D%80-int-float-%E2%80%98-inf%E2%80%99-%EB%8A%94-%EB%B6%88%EA%B0%80%ED%95%98%EB%8B%A4"><span class="nav-number">1.4.</span> <span class="nav-text">int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B0%B8%EA%B3%A0-%EB%AC%B8%EC%84%9C"><span class="nav-number">1.5.</span> <span class="nav-text">참고 문서</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -230,7 +230,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-07 11:37:16 / Modified: 12:00:04" itemprop="dateCreated datePublished" datetime="2021-04-07T11:37:16+09:00">2021-04-07</time>
+      <time title="Created: 2021-04-07 11:37:16 / Modified: 13:07:03" itemprop="dateCreated datePublished" datetime="2021-04-07T11:37:16+09:00">2021-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,12 +268,12 @@
 <hr>
 <h2 id="float-자료형의-양의-무한대-값과-음의-무한대-값"><a href="#float-자료형의-양의-무한대-값과-음의-무한대-값" class="headerlink" title="float 자료형의 양의 무한대 값과 음의 무한대 값"></a>float 자료형의 양의 무한대 값과 음의 무한대 값</h2><p>maximum = float(‘inf’)<br>minimum = float(‘-inf’)</p>
 <hr>
-<h2 id="int-float-‘inf’-혹은-int-flost-‘-inf’-는-불가하다"><a href="#int-float-‘inf’-혹은-int-flost-‘-inf’-는-불가하다" class="headerlink" title="int(float(‘inf’)) 혹은 int(flost(‘-inf’)) 는 불가하다."></a>int(float(‘inf’)) 혹은 int(flost(‘-inf’)) 는 불가하다.</h2><blockquote>
+<h2 id="int-float-‘inf’-혹은-int-float-‘-inf’-는-불가하다"><a href="#int-float-‘inf’-혹은-int-float-‘-inf’-는-불가하다" class="headerlink" title="int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다."></a>int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다.</h2><blockquote>
 <p>OverflowError : cannot convert to float infinity to integer</p>
 </blockquote>
 <p>위와 같은 오류 메세지가 뜬다.</p>
 <hr>
-<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><blockquote>
+<h2 id="참고-문서"><a href="#참고-문서" class="headerlink" title="참고 문서"></a>참고 문서</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/sys.html#sys.maxsize">https://docs.python.org/3/library/sys.html#sys.maxsize</a><br>An integer giving the maximum value a variable of type Py_ssize_t can take.<br>It’s usually<br>2^31 - 1 on a 32-bit platform<br>2^63 - 1 on a 64-bit platform.</p>
 </blockquote>
 <blockquote>
