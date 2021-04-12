@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -190,6 +190,103 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/12/2579%EB%B2%88-%EA%B3%84%EB%8B%A8-%EC%98%A4%EB%A5%B4%EA%B8%B0-IndexError-%ED%95%B4%EA%B2%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/12/2579%EB%B2%88-%EA%B3%84%EB%8B%A8-%EC%98%A4%EB%A5%B4%EA%B8%B0-IndexError-%ED%95%B4%EA%B2%B0/" class="post-title-link" itemprop="url">2579번:계단 오르기(IndexError 해결)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-12 17:41:37 / Modified: 17:56:57" itemprop="dateCreated datePublished" datetime="2021-04-12T17:41:37+09:00">2021-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="IndexError가-난-코드"><a href="#IndexError가-난-코드" class="headerlink" title="IndexError가 난 코드"></a>IndexError가 난 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">stairs = [-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    stairs.append(<span class="built_in">int</span>(<span class="built_in">input</span>()))</span><br><span class="line"></span><br><span class="line">dp = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">dp[<span class="number">1</span>] = stairs[<span class="number">1</span>]</span><br><span class="line">dp[<span class="number">2</span>] = stairs[<span class="number">1</span>]+stairs[<span class="number">2</span>]</span><br><span class="line">dp[<span class="number">3</span>] = <span class="built_in">max</span>(stairs[<span class="number">1</span>] + stairs[<span class="number">3</span>], stairs[<span class="number">2</span>]+stairs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">    dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">2</span>]+stairs[i], dp[i-<span class="number">3</span>]+stairs[i-<span class="number">1</span>]+stairs[i])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[n])</span><br></pre></td></tr></table></figure>
+
+<h1 id="IndexError-이유"><a href="#IndexError-이유" class="headerlink" title="IndexError 이유"></a>IndexError 이유</h1><blockquote>
+<p>input n 이 0일 때 dp[1] = stairs[1] 에서 stairs[1]에 접근하기 때문<br>또한 n 이 1, 2, 3 일때도 dp 초기화에서 같은 문제가 발생한다.<br>input n이 0 이면 stairs에는 -1만 들어있는 상태이기 때문에, 리스트가 stairs[0]까지만 접근이 가능하다.<br>그런데 있지도 않은 stairs[1]에 접근하려고 하니 IndexError가 떴던 것</p>
+</blockquote>
+<h1 id="IndexError-해결방법1"><a href="#IndexError-해결방법1" class="headerlink" title="IndexError 해결방법1"></a>IndexError 해결방법1</h1><blockquote>
+<p>staris 도 defaultdict(int)로 선언해준다.</p>
+<ul>
+<li>메모리 32692KB</li>
+<li>시간 112ms</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">stairs = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">    stairs[i] = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">dp = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">dp[<span class="number">1</span>] = stairs[<span class="number">1</span>]</span><br><span class="line">dp[<span class="number">2</span>] = stairs[<span class="number">1</span>]+stairs[<span class="number">2</span>]</span><br><span class="line">dp[<span class="number">3</span>] = <span class="built_in">max</span>(stairs[<span class="number">1</span>] + stairs[<span class="number">3</span>], stairs[<span class="number">2</span>]+stairs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">    dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">2</span>]+stairs[i], dp[i-<span class="number">3</span>]+stairs[i-<span class="number">1</span>]+stairs[i])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[n])</span><br></pre></td></tr></table></figure>
+<h1 id="해결-방법2"><a href="#해결-방법2" class="headerlink" title="해결 방법2"></a>해결 방법2</h1><blockquote>
+<p>if문으로 n이 0일 때와 dp 초기화에 해당하는 n이 1,2,3 일 때를 모두 if문으로 예외처리해준다.</p>
+<blockquote>
+<ul>
+<li>메모리 32716KB</li>
+</ul>
+</blockquote>
+<ul>
+<li>시간 108ms</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">stairs = [-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    stairs.append(<span class="built_in">int</span>(<span class="built_in">input</span>()))</span><br><span class="line"></span><br><span class="line">dp = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(stairs[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">elif</span> n == <span class="number">2</span>:</span><br><span class="line">    <span class="built_in">print</span>(stairs[<span class="number">1</span>]+stairs[<span class="number">2</span>])</span><br><span class="line"><span class="keyword">elif</span> n == <span class="number">3</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">max</span>(stairs[<span class="number">1</span>] + stairs[<span class="number">3</span>], stairs[<span class="number">2</span>]+stairs[<span class="number">3</span>]))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    dp[<span class="number">1</span>] = stairs[<span class="number">1</span>]</span><br><span class="line">    dp[<span class="number">2</span>] = stairs[<span class="number">1</span>]+stairs[<span class="number">2</span>]</span><br><span class="line">    dp[<span class="number">3</span>] = <span class="built_in">max</span>(stairs[<span class="number">1</span>] + stairs[<span class="number">3</span>], stairs[<span class="number">2</span>]+stairs[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">2</span>]+stairs[i], dp[i-<span class="number">3</span>]+stairs[i-<span class="number">1</span>]+stairs[i])</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(dp[n])</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -635,7 +732,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 21:24:10" itemprop="dateModified" datetime="2021-04-09T21:24:10+09:00">2021-04-09</time>
+        <time title="Modified: 2021-04-09 21:28:02" itemprop="dateModified" datetime="2021-04-09T21:28:02+09:00">2021-04-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -658,7 +755,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/04/01/%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98/">완주하지 못한 선수 문제 풀이</a>에서 처음 본 모듈이기 때문에 익히고 잊지 않기 위해 정리해둔다.</p>
-<hr>
 <h1 id="Counter-클래스"><a href="#Counter-클래스" class="headerlink" title="Counter 클래스"></a>Counter 클래스</h1><ul>
 <li>Counter 객체는 아이템에 대한 개수를 계산해 <em><strong>딕셔너리로 리턴</strong></em>한다.</li>
 <li>Counter 객체가 리턴하는 딕셔너리의</li>
@@ -749,7 +845,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 21:25:00" itemprop="dateModified" datetime="2021-04-09T21:25:00+09:00">2021-04-09</time>
+        <time title="Modified: 2021-04-10 21:56:40" itemprop="dateModified" datetime="2021-04-10T21:56:40+09:00">2021-04-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -771,8 +867,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="정리이유"><a href="#정리이유" class="headerlink" title="정리이유"></a>정리이유</h1><p>문자열을 다루는 문제에서 자주 쓰이기에 익혀두기 위해 정리해둔다.</p>
-<hr>
+          <h1 id="정리이유"><a href="#정리이유" class="headerlink" title="정리이유"></a>정리이유</h1><blockquote>
+<p>문자열을 다루는 문제에서 자주 쓰이기에 익혀두기 위해 정리해둔다.</p>
+</blockquote>
 <h1 id="정규표현식-문자열-치환"><a href="#정규표현식-문자열-치환" class="headerlink" title="정규표현식 문자열 치환"></a>정규표현식 문자열 치환</h1><blockquote>
 <h2 id="re-sub-정규-표현식-대상-문자열-치환-문자"><a href="#re-sub-정규-표현식-대상-문자열-치환-문자" class="headerlink" title="re.sub(정규 표현식, 대상 문자열, 치환 문자)"></a>re.sub(정규 표현식, 대상 문자열, 치환 문자)</h2><ul>
 <li><strong>정규 표현식</strong> : 검색 패턴을 지정</li>
