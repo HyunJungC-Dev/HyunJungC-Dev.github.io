@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -199,6 +199,92 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/" class="post-title-link" itemprop="url">1967번:트리의 지름(RecursionError 해결)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-14 20:44:32 / Modified: 21:08:02" itemprop="dateCreated datePublished" datetime="2021-04-14T20:44:32+09:00">2021-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="처음-접근"><a href="#처음-접근" class="headerlink" title="처음 접근"></a>처음 접근</h1><blockquote>
+<p><a href="">트리의 지름 구하는 공식</a>에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.</p>
+</blockquote>
+<h1 id="RecursionError"><a href="#RecursionError" class="headerlink" title="RecursionError"></a>RecursionError</h1><blockquote>
+<p>가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데 <br> 조건을 보면 노드의 개수 n(1 ≤ n ≤ 10,000) 이므로 <br> 최악의 경우 recursion이 10000번 일어나게 된다. <br> 파이썬에서 recursion 수는 최대 998번으로 제한하고 있으므로 <strong>maximum recurion에 의해 RecursionError</strong>가 발생한 것이다.</p>
+</blockquote>
+<h1 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h1><blockquote>
+<p>recursion으로 구현한 <strong>dfs()를 iteration(stack)으로 구현</strong>해주면 된다.</p>
+</blockquote>
+<h2 id="RecurionError가-발생한-코드-dfs-를-recursion으로-구현"><a href="#RecurionError가-발생한-코드-dfs-를-recursion으로-구현" class="headerlink" title="RecurionError가 발생한 코드 - dfs()를 recursion으로 구현"></a>RecurionError가 발생한 코드 - dfs()를 recursion으로 구현</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">tree = [collections.defaultdict(<span class="built_in">int</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">path = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">visited = [<span class="literal">False</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">    p, c, w = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&#x27; &#x27;</span>))</span><br><span class="line">    tree[p][c] = w</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">start, before_node, path_length</span>):</span></span><br><span class="line">    <span class="keyword">if</span> visited[start] <span class="keyword">is</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    visited[start] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> tree[start][before_node] != <span class="number">0</span>:</span><br><span class="line">        path_length += tree[start][before_node]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> tree[before_node][start] != <span class="number">0</span>:</span><br><span class="line">        path_length += tree[before_node][start]</span><br><span class="line"></span><br><span class="line">    path[start] = path_length</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> adj_v <span class="keyword">in</span> tree[start]:</span><br><span class="line">        dfs(adj_v, start, path_length)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(visited)):</span><br><span class="line">    visited[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">max_path_length = <span class="number">0</span></span><br><span class="line">max_path_node = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx, p <span class="keyword">in</span> <span class="built_in">enumerate</span>(path):</span><br><span class="line">    <span class="keyword">if</span> max_path_length &lt; p:</span><br><span class="line">        max_path_length = p</span><br><span class="line">        max_path_node = idx</span><br><span class="line"></span><br><span class="line">dfs(max_path_node, max_path_node, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="iteration-stack-으로-변경한-dfs"><a href="#iteration-stack-으로-변경한-dfs" class="headerlink" title="iteration(stack)으로 변경한 dfs()"></a>iteration(stack)으로 변경한 dfs()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">start, path_length</span>):</span></span><br><span class="line">    stack.append((start, start, path_length))</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        curr, before_node, pl = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> visited[curr] <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">            visited[curr] = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> tree[curr][before_node] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[curr][before_node]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> tree[before_node][curr] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[before_node][curr]</span><br><span class="line"></span><br><span class="line">            path[curr] = pl</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> adj_v <span class="keyword">in</span> tree[curr]:</span><br><span class="line">                stack.append((adj_v, curr, pl))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="RecursionError를-해결한-코드-dfs-를-iteration-stack-으로-구현"><a href="#RecursionError를-해결한-코드-dfs-를-iteration-stack-으로-구현" class="headerlink" title="RecursionError를 해결한 코드 - dfs()를 iteration(stack)으로 구현"></a>RecursionError를 해결한 코드 - dfs()를 iteration(stack)으로 구현</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">tree = [collections.defaultdict(<span class="built_in">int</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">path = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">visited = [<span class="literal">False</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">    p, c, w = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&#x27; &#x27;</span>))</span><br><span class="line">    tree[p][c] = w</span><br><span class="line"></span><br><span class="line">stack = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">start, path_length</span>):</span></span><br><span class="line">    stack.append((start, start, path_length))</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        curr, before_node, pl = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> visited[curr] <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">            visited[curr] = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> tree[curr][before_node] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[curr][before_node]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> tree[before_node][curr] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[before_node][curr]</span><br><span class="line"></span><br><span class="line">            path[curr] = pl</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> adj_v <span class="keyword">in</span> tree[curr]:</span><br><span class="line">                stack.append((adj_v, curr, pl))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(visited)):</span><br><span class="line">    visited[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">max_path_length = <span class="number">0</span></span><br><span class="line">max_path_node = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx, p <span class="keyword">in</span> <span class="built_in">enumerate</span>(path):</span><br><span class="line">    <span class="keyword">if</span> max_path_length &lt; p:</span><br><span class="line">        max_path_length = p</span><br><span class="line">        max_path_node = idx</span><br><span class="line"></span><br><span class="line">dfs(max_path_node, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/14/%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-%EA%B5%AC%ED%95%98%EA%B8%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -224,7 +310,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-14 10:18:13 / Modified: 10:32:14" itemprop="dateCreated datePublished" datetime="2021-04-14T10:18:13+09:00">2021-04-14</time>
+      <time title="Created: 2021-04-14 10:18:13 / Modified: 18:52:43" itemprop="dateCreated datePublished" datetime="2021-04-14T10:18:13+09:00">2021-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,7 +332,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1967">백준 1967번 트리의 지름</a></p>
+          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1967">백준 1967번 트리의 지름</a>을 풀 때, 아무리 고민해도 시간 초과를 해결하지 못해 조금 검색해보니 트리의 지름을 구하는 공식이 있었기에 정리해둔다.</p>
 <h1 id="트리의-지름-구하는-공식"><a href="#트리의-지름-구하는-공식" class="headerlink" title="트리의 지름 구하는 공식"></a>트리의 지름 구하는 공식</h1><blockquote>
 <p>임의의 노드 A에서 가장 거리가 먼 노드 B를 구하고,<br>그 B에서 가장 거리가 먼 노드 C를 구하게 되었을때,<br><strong>B와 C사이의 거리</strong>가 <strong>트리의 지름</strong>이 된다.</p>
 </blockquote>
@@ -1030,95 +1116,6 @@
 <hr>
 <h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p>파이썬 알고리즘 인터뷰 p132-p134</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/03/31/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-sub/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/31/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-sub/" class="post-title-link" itemprop="url">정규표현식 - re.sub()</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-31 21:20:12" itemprop="dateCreated datePublished" datetime="2021-03-31T21:20:12+09:00">2021-03-31</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-10 21:56:40" itemprop="dateModified" datetime="2021-04-10T21:56:40+09:00">2021-04-10</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-python/" itemprop="url" rel="index"><span itemprop="name">TIL/python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="정리이유"><a href="#정리이유" class="headerlink" title="정리이유"></a>정리이유</h1><blockquote>
-<p>문자열을 다루는 문제에서 자주 쓰이기에 익혀두기 위해 정리해둔다.</p>
-</blockquote>
-<h1 id="정규표현식-문자열-치환"><a href="#정규표현식-문자열-치환" class="headerlink" title="정규표현식 문자열 치환"></a>정규표현식 문자열 치환</h1><blockquote>
-<h2 id="re-sub-정규-표현식-대상-문자열-치환-문자"><a href="#re-sub-정규-표현식-대상-문자열-치환-문자" class="headerlink" title="re.sub(정규 표현식, 대상 문자열, 치환 문자)"></a>re.sub(정규 표현식, 대상 문자열, 치환 문자)</h2><ul>
-<li><strong>정규 표현식</strong> : 검색 패턴을 지정</li>
-<li><strong>대상 문자열</strong> : 검색 대상이 되는 문자열</li>
-<li><strong>치환 문자</strong> : 변경하고 싶은 문자</li>
-</ul>
-</blockquote>
-<h2 id="메타-문자"><a href="#메타-문자" class="headerlink" title="메타 문자"></a>메타 문자</h2><h3 id="문자-클래스"><a href="#문자-클래스" class="headerlink" title="문자 클래스 []"></a>문자 클래스 []</h3>
       
     </div>
 
