@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="정리 이유 파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데best_sum &#x3D; -sys.maxsize 라고 선언하는 부분을 처음봐서sys.maxsize에 대해 찾아보고 정리하였다.  sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 p">
+<meta name="description" content="정리 이유문자열을 뒤집을 때 항상 list로 변환하여 list의 reverse()함수를 사용하였는데 보다 빠른 슬라이싱으로 가능한 방법이 있어서 기억하기 위해 정리해둔다. 슬라이싱을 사용하여 문자열 뒤집기 s[::-1]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sys.maxsize - 최대정수값">
-<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/04/07/sys-maxsize-%EC%B5%9C%EB%8C%80%EC%A0%95%EC%88%98%EA%B0%92/index.html">
+<meta property="og:title" content="문자열 뒤집기(슬라이싱 사용)">
+<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/05/11/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1-%EC%82%AC%EC%9A%A9/index.html">
 <meta property="og:site_name" content="HyunJungC Blog">
-<meta property="og:description" content="정리 이유 파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데best_sum &#x3D; -sys.maxsize 라고 선언하는 부분을 처음봐서sys.maxsize에 대해 찾아보고 정리하였다.  sys.maxsize python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다. 즉, 이 sys.maxsize 크기의 List가 p">
+<meta property="og:description" content="정리 이유문자열을 뒤집을 때 항상 list로 변환하여 list의 reverse()함수를 사용하였는데 보다 빠른 슬라이싱으로 가능한 방법이 있어서 기억하기 위해 정리해둔다. 슬라이싱을 사용하여 문자열 뒤집기 s[::-1]">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-07T02:37:16.000Z">
-<meta property="article:modified_time" content="2021-04-09T12:21:53.391Z">
+<meta property="article:published_time" content="2021-05-11T01:25:19.000Z">
+<meta property="article:modified_time" content="2021-05-11T01:30:15.271Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/04/07/sys-maxsize-%EC%B5%9C%EB%8C%80%EC%A0%95%EC%88%98%EA%B0%92/">
+<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/05/11/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1-%EC%82%AC%EC%9A%A9/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'en'
   };
 </script>
-<title>sys.maxsize - 최대정수값 | HyunJungC Blog</title>
+<title>문자열 뒤집기(슬라이싱 사용) | HyunJungC Blog</title>
   
 
 
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%A0%95%EB%A6%AC-%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">정리 이유</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sys-maxsize"><span class="nav-number">2.</span> <span class="nav-text">sys.maxsize</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python3%EC%97%90%EC%84%9C-int-%EC%9E%90%EB%A3%8C%ED%98%95-%EC%A0%95%EC%88%98-%EC%B5%9C%EB%8C%80%EA%B0%92-%EC%B5%9C%EC%86%8C%EA%B0%92"><span class="nav-number">2.1.</span> <span class="nav-text">python3에서 int 자료형 정수 최대값, 최소값</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-%E2%80%98inf%E2%80%99-%EC%99%80%EC%9D%98-%EC%B0%A8%EC%9D%B4"><span class="nav-number">2.2.</span> <span class="nav-text">float(‘inf’) 와의 차이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%98-%EC%96%91%EC%9D%98-%EB%AC%B4%ED%95%9C%EB%8C%80-%EA%B0%92%EA%B3%BC-%EC%9D%8C%EC%9D%98-%EB%AC%B4%ED%95%9C%EB%8C%80-%EA%B0%92"><span class="nav-number">2.3.</span> <span class="nav-text">float 자료형의 양의 무한대 값과 음의 무한대 값</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int-float-%E2%80%98inf%E2%80%99-%ED%98%B9%EC%9D%80-int-float-%E2%80%98-inf%E2%80%99-%EB%8A%94-%EB%B6%88%EA%B0%80%ED%95%98%EB%8B%A4"><span class="nav-number">2.4.</span> <span class="nav-text">int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B0%B8%EA%B3%A0-%EB%AC%B8%EC%84%9C"><span class="nav-number">2.5.</span> <span class="nav-text">참고 문서</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%A0%95%EB%A6%AC-%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">정리 이유</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">슬라이싱을 사용하여 문자열 뒤집기</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/07/sys-maxsize-%EC%B5%9C%EB%8C%80%EC%A0%95%EC%88%98%EA%B0%92/">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/05/11/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1-%EC%82%AC%EC%9A%A9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -218,7 +218,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          sys.maxsize - 최대정수값
+          문자열 뒤집기(슬라이싱 사용)
         </h1>
 
         <div class="post-meta-container">
@@ -228,16 +228,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-04-07 11:37:16" itemprop="dateCreated datePublished" datetime="2021-04-07T11:37:16+09:00">2021-04-07</time>
+      <time title="Created: 2021-05-11 10:25:19 / Modified: 10:30:15" itemprop="dateCreated datePublished" datetime="2021-05-11T10:25:19+09:00">2021-05-11</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 21:21:53" itemprop="dateModified" datetime="2021-04-09T21:21:53+09:00">2021-04-09</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -258,35 +252,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><blockquote>
-<p>파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데<br>best_sum = -sys.maxsize 라고 선언하는 부분을 처음봐서<br>sys.maxsize에 대해 찾아보고 정리하였다.</p>
-</blockquote>
-<h1 id="sys-maxsize"><a href="#sys-maxsize" class="headerlink" title="sys.maxsize"></a>sys.maxsize</h1><ul>
-<li>python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다.</li>
-<li>즉, 이 sys.maxsize 크기의 List가 python3에서 만들 수 있는 최대 크기의 List이다.</li>
-<li>일반적으로 32비트 플랫폼에서는 2^31 - 1 이고</li>
-<li>64비트 플랫폼에서는 2^63 - 1 이다.</li>
-</ul>
-<hr>
-<h2 id="python3에서-int-자료형-정수-최대값-최소값"><a href="#python3에서-int-자료형-정수-최대값-최소값" class="headerlink" title="python3에서 int 자료형 정수 최대값, 최소값"></a>python3에서 int 자료형 정수 최대값, 최소값</h2><ul>
-<li>maximum = sys.maxsize</li>
-<li>minimum = -(sys.maxsize+1)</li>
-</ul>
-<hr>
-<h2 id="float-‘inf’-와의-차이"><a href="#float-‘inf’-와의-차이" class="headerlink" title="float(‘inf’) 와의 차이"></a>float(‘inf’) 와의 차이</h2><p>파이썬에서 코딩할 때 아주 큰 값을 잡기 위해 float(‘inf’)를 자주 사용하는데, 이는 float 자료형의 양의 무한대값이다.<br>무한대 값과 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수 값은 서로 의미하는 것이 다르다.</p>
-<hr>
-<h2 id="float-자료형의-양의-무한대-값과-음의-무한대-값"><a href="#float-자료형의-양의-무한대-값과-음의-무한대-값" class="headerlink" title="float 자료형의 양의 무한대 값과 음의 무한대 값"></a>float 자료형의 양의 무한대 값과 음의 무한대 값</h2><p>maximum = float(‘inf’)<br>minimum = float(‘-inf’)</p>
-<hr>
-<h2 id="int-float-‘inf’-혹은-int-float-‘-inf’-는-불가하다"><a href="#int-float-‘inf’-혹은-int-float-‘-inf’-는-불가하다" class="headerlink" title="int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다."></a>int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다.</h2><blockquote>
-<p>OverflowError : cannot convert to float infinity to integer</p>
-</blockquote>
-<p>위와 같은 오류 메세지가 뜬다.</p>
-<hr>
-<h2 id="참고-문서"><a href="#참고-문서" class="headerlink" title="참고 문서"></a>참고 문서</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/sys.html#sys.maxsize">https://docs.python.org/3/library/sys.html#sys.maxsize</a><br>An integer giving the maximum value a variable of type Py_ssize_t can take.<br>It’s usually<br>2^31 - 1 on a 32-bit platform<br>2^63 - 1 on a 64-bit platform.</p>
-</blockquote>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0353/">https://www.python.org/dev/peps/pep-0353/</a><br>PEP 353 – Using ssize_t as the index type</p>
+        <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p>문자열을 뒤집을 때 항상 list로 변환하여 list의 reverse()함수를 사용하였는데 보다 빠른 슬라이싱으로 가능한 방법이 있어서 기억하기 위해 정리해둔다.</p>
+<h1 id="슬라이싱을-사용하여-문자열-뒤집기"><a href="#슬라이싱을-사용하여-문자열-뒤집기" class="headerlink" title="슬라이싱을 사용하여 문자열 뒤집기"></a>슬라이싱을 사용하여 문자열 뒤집기</h1><blockquote>
+<p>s[::-1]</p>
 </blockquote>
 
     </div>
@@ -301,14 +269,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/04/07/from-typing-import-List-%ED%98%95-%ED%9E%8C%ED%8A%B8-%EC%A7%80%EC%9B%90/" rel="prev" title="from typing import List - 형 힌트 지원">
-                  <i class="fa fa-chevron-left"></i> from typing import List - 형 힌트 지원
+                <a href="/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/" rel="prev" title="1967번:트리의 지름(RecursionError 해결)">
+                  <i class="fa fa-chevron-left"></i> 1967번:트리의 지름(RecursionError 해결)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/04/09/sorted-%EC%A0%95%EB%A0%AC-%EC%88%9C%EC%84%9C-%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0-key-function/" rel="next" title="sorted() 정렬 순서 지정하기 - key function">
-                  sorted() 정렬 순서 지정하기 - key function <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
