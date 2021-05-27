@@ -222,8 +222,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-05-28 01:22:42" itemprop="dateCreated datePublished" datetime="2021-05-28T01:22:42+09:00">2021-05-28</time>
+      <time title="Created: 2021-05-28 01:22:42 / Modified: 01:46:03" itemprop="dateCreated datePublished" datetime="2021-05-28T01:22:42+09:00">2021-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-python/" itemprop="url" rel="index"><span itemprop="name">TIL/python</span></a>
+        </span>
     </span>
 
   
@@ -236,7 +246,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/11723">백준 11723번 집합</a>을 풀 때, 파이썬 입력함수에 따라 시간 초과가 나고 안 나고가 결정될 만큼 시간 차이가 있어 각 입력함수별 차이를 익히기 위해 정리해둔다.</p>
+<h2 id="input"><a href="#input" class="headerlink" title="input()"></a>input()</h2><ul>
+<li><strong>문자열</strong>로 입력받는다.</li>
+<li>list(map(int, input().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.</li>
+</ul>
+<h2 id="sys-stdin-readline"><a href="#sys-stdin-readline" class="headerlink" title="sys.stdin.readline()"></a>sys.stdin.readline()</h2><ul>
+<li><strong>import sys</strong> 를 해주어야 한다.</li>
+<li><strong>문자열</strong>로 입력받는다.</li>
+<li>readline()은 <strong>문자열 마지막에 개행문자(줄바꿈 문자\n)을 포함</strong>하고 있음을 주의하자.</li>
+<li>sys.stdin.readline()**.rstrip()**으로 오른쪽 공백을 삭제할 수 있다.</li>
+<li>sys.stdin.readline()**.lstrip()**으로 왼쪽 공백을 삭제할 수 있다.</li>
+<li>sys.stdin.readline()**.strip()**으로 오른쪽, 왼쪽 공백을 삭제할 수 있다.</li>
+<li>(이 때 공백에는 개행문자, 스페이스 바 등이 해당된다.)</li>
+<li>list(map(int, stdin.readline().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.</li>
+</ul>
+<h2 id="sys-stdin-readline-인수"><a href="#sys-stdin-readline-인수" class="headerlink" title="sys.stdin.readline(인수)"></a>sys.stdin.readline(인수)</h2><ul>
+<li>인수에는 한번에 읽어들일 문자의 수를 넣어준다.</li>
+<li>그럼 그 숫자만큼의 길이만 읽어들인다.  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num = sys.stdin.readline(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 입력 : abcdef</span></span><br><span class="line"><span class="comment"># print(num) 결과 : ab</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>알고리즘 최적화를 위해서 input() 대신 sys.stdin.readline()을 사용하는 것이 좋다.</p>
+
       
     </div>
 
@@ -287,7 +317,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-05-28 01:10:34 / Modified: 01:20:44" itemprop="dateCreated datePublished" datetime="2021-05-28T01:10:34+09:00">2021-05-28</time>
+      <time title="Created: 2021-05-28 01:10:34 / Modified: 01:27:34" itemprop="dateCreated datePublished" datetime="2021-05-28T01:10:34+09:00">2021-05-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -310,7 +340,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p><em><strong>TIL/python</strong></em><br><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/05">https://hyunjungc-dev.github.io/2021/05</a></p>
+<p><em><strong>TIL/python</strong></em><br><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/">https://hyunjungc-dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/</a></p>
 </blockquote>
 <blockquote>
 <p><em><strong>이 문제의 경우, 같은 코드라도 파이썬의 입력함수에 따라 시간초과가 나기도하고 아니기도 해서 파이썬의 입력함수에 대해 TIL/python 에 정리했다.</strong></em></p>
