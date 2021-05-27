@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="TIL&#x2F;pythonhttps:&#x2F;&#x2F;hyunjungc-dev.github.io&#x2F;2021&#x2F;05   이 문제의 경우, 같은 코드라도 파이썬의 입력함수에 따라 시간초과가 나기도하고 아니기도 해서 파이썬의 입력함수에 대해 TIL&#x2F;python 에 정리했다.  시간 초과가 난 코드1234567891011121314151617181920212223m &#x3D; int(input">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11723번: 집합 (시간 초과 해결)">
+<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/05/28/11723%EB%B2%88-%EC%A7%91%ED%95%A9-%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0/index.html">
+<meta property="og:site_name" content="HyunJungC Blog">
+<meta property="og:description" content="TIL&#x2F;pythonhttps:&#x2F;&#x2F;hyunjungc-dev.github.io&#x2F;2021&#x2F;05   이 문제의 경우, 같은 코드라도 파이썬의 입력함수에 따라 시간초과가 나기도하고 아니기도 해서 파이썬의 입력함수에 대해 TIL&#x2F;python 에 정리했다.  시간 초과가 난 코드1234567891011121314151617181920212223m &#x3D; int(input">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-27T16:10:34.000Z">
+<meta property="article:modified_time" content="2021-05-27T16:20:44.075Z">
+<meta property="article:author" content="Hyun Jung">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/05/28/11723%EB%B2%88-%EC%A7%91%ED%95%A9-%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>11723번: 집합 (시간 초과 해결) | HyunJungC Blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">HyunJungC Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC%EA%B0%80-%EB%82%9C-%EC%BD%94%EB%93%9C"><span class="nav-number">1.</span> <span class="nav-text">시간 초과가 난 코드</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC%EA%B0%80-%EB%82%9C-%EC%9D%B4%EC%9C%A0"><span class="nav-number">2.</span> <span class="nav-text">시간 초과가 난 이유</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95-1"><span class="nav-number">3.</span> <span class="nav-text">시간 초과 해결 방법 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC%EB%A5%BC-%ED%95%B4%EA%B2%B0%ED%95%9C-%EC%BD%94%EB%93%9C"><span class="nav-number">4.</span> <span class="nav-text">시간 초과를 해결한 코드</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hyun Jung</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/05/28/11723%EB%B2%88-%EC%A7%91%ED%95%A9-%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          11723번: 집합 (시간 초과 해결)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-28 01:10:34 / Modified: 01:20:44" itemprop="dateCreated datePublished" datetime="2021-05-28T01:10:34+09:00">2021-05-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p><em><strong>TIL/python</strong></em><br><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/05">https://hyunjungc-dev.github.io/2021/05</a></p>
+</blockquote>
+<blockquote>
+<p><em><strong>이 문제의 경우, 같은 코드라도 파이썬의 입력함수에 따라 시간초과가 나기도하고 아니기도 해서 파이썬의 입력함수에 대해 TIL/python 에 정리했다.</strong></em></p>
+</blockquote>
+<h1 id="시간-초과가-난-코드"><a href="#시간-초과가-난-코드" class="headerlink" title="시간 초과가 난 코드"></a>시간 초과가 난 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">S = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    cmd = <span class="built_in">input</span>()</span><br><span class="line">    <span class="keyword">if</span> cmd == <span class="string">&quot;all&quot;</span>:</span><br><span class="line">        S = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">21</span>)&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> cmd == <span class="string">&quot;empty&quot;</span>:</span><br><span class="line">        S = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        cmd, x = cmd.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        x = <span class="built_in">int</span>(x)</span><br><span class="line">        <span class="keyword">if</span> cmd == <span class="string">&quot;add&quot;</span>:</span><br><span class="line">            S.add(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;check&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">int</span>(x <span class="keyword">in</span> S))</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;remove&quot;</span>:</span><br><span class="line">            S.discard(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;toggle&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> x <span class="keyword">in</span> S:</span><br><span class="line">                S.discard(x)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                S.add(x)</span><br></pre></td></tr></table></figure>
+
+<h1 id="시간-초과가-난-이유"><a href="#시간-초과가-난-이유" class="headerlink" title="시간 초과가 난 이유"></a>시간 초과가 난 이유</h1><blockquote>
+<p>파이썬 입력함수 중 input()을 사용했기 때문</p>
+</blockquote>
+<h1 id="시간-초과-해결-방법-1"><a href="#시간-초과-해결-방법-1" class="headerlink" title="시간 초과 해결 방법 1"></a>시간 초과 해결 방법 1</h1><blockquote>
+<p>파이썬 입력함수 중 sys.stdin.readline()을 사용한다.<br>위 함수로 입력을 받을 경우 <strong>맨 끝에 개행문자(줄바꿈 문자 \n)을 포함하고 있음을 주의</strong>해야한다.</p>
+</blockquote>
+<h1 id="시간-초과를-해결한-코드"><a href="#시간-초과를-해결한-코드" class="headerlink" title="시간 초과를 해결한 코드"></a>시간 초과를 해결한 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">m = <span class="built_in">int</span>(sys.stdin.readline())</span><br><span class="line">S = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    cmd = sys.stdin.readline()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cmd == <span class="string">&quot;all\n&quot;</span>:</span><br><span class="line">        S = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">21</span>)&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> cmd == <span class="string">&quot;empty\n&quot;</span>:</span><br><span class="line">        S = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        cmd, x = cmd.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        x = <span class="built_in">int</span>(x)</span><br><span class="line">        <span class="keyword">if</span> cmd == <span class="string">&quot;add&quot;</span>:</span><br><span class="line">            S.add(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;check&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">int</span>(x <span class="keyword">in</span> S))</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;remove&quot;</span>:</span><br><span class="line">            S.discard(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;toggle&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> x <span class="keyword">in</span> S:</span><br><span class="line">                S.discard(x)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                S.add(x)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/11/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1-%EC%82%AC%EC%9A%A9/" rel="prev" title="문자열 뒤집기(슬라이싱 사용)">
+                  <i class="fa fa-chevron-left"></i> 문자열 뒤집기(슬라이싱 사용)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/" rel="next" title="파이썬 입력함수 비교">
+                  파이썬 입력함수 비교 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hyun Jung</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
