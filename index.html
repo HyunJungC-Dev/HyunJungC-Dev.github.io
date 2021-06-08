@@ -230,7 +230,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-09 01:01:42" itemprop="dateModified" datetime="2021-06-09T01:01:42+09:00">2021-06-09</time>
+        <time title="Modified: 2021-06-09 02:24:05" itemprop="dateModified" datetime="2021-06-09T02:24:05+09:00">2021-06-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,8 +252,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="이벤트-전파"><a href="#이벤트-전파" class="headerlink" title="이벤트 전파"></a>이벤트 전파</h1><p>DOM 트리 상에 존재하는 DOM 요소 노드에서 발생한 이벤트가 DOM 트리를 통해 전파되는 것을 말한다.[^id]<br>[^id] : 안녕</p>
-<h2 id="CurrentTarget-vs-Target"><a href="#CurrentTarget-vs-Target" class="headerlink" title="CurrentTarget vs Target"></a>CurrentTarget vs Target</h2><p><a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev/pen/oNZymJo">코드펜에서 보기</a></p>
+          <h1 id="이벤트-전파"><a href="#이벤트-전파" class="headerlink" title="이벤트 전파"></a>이벤트 전파</h1><p>DOM 트리 상에 존재하는 DOM 요소 노드에서 발생한 이벤트가 DOM 트리를 통해 전파되는 것을 말한다.<br>이벤트 전파는 이벤트 객체가 전파되는 방향에 따라 3단계로 구분할 수 있다.<sup><a href="#footnote_1">1</a></sup>  </p>
+<ol>
+<li>캡쳐링 단계(capturing phase) : 이벤트가 상위 요소 -&gt; 하위 요소 방향으로 전파</li>
+<li>타깃 단계(target phase) : 이벤트가 이벤트 타깃에 도달</li>
+<li>버블링 단계(bubbling phase) : 이벤트가 하위 요소 -&gt; 상위 요소 방향으로 전파</li>
+</ol>
+<p><img src="/img/EventPropagation/EventPropagationBasic.jpg" alt="그림 1"></p>
+<p>클릭 이벤트를 예시로 그림1을 보면, div를 클릭했기 때문에 클릭 이벤트의 시발점은 div가 된다.<br>이 때, body와 html 등 클릭 이벤트의 상위 요소에 이벤트 시발점의 이벤트와 동일한 이벤트가 존재한다면, 그 이벤트들도 탑승하게 된다.<br>이처럼 하나의 이벤트가 발생했을 때, 다른 이벤트들도 영향을 받아 실행될 수 있어 그 이벤트들의 순서에 대한 기준이 필요하다.<br>그 기준이 이벤트 플로우, 이벤트 전파이다.</p>
+<p>이벤트 전파는 캡쳐링 단계 -&gt; 타깃 단계 -&gt; 버블링 단계 순으로 진행된다.</p>
+<h2 id="target-vs-currentTarget"><a href="#target-vs-currentTarget" class="headerlink" title="target vs currentTarget"></a>target vs currentTarget</h2><p>target은 이벤트 전파를 발생시킨, 이벤트 시발점이다.<br>그림1에서 보면, 모든 이벤트 전파의 시발점이 div이므로 div객체의 이벤트에서도 div이고, body객체의 이벤트와 html객체의 이벤트에서도 div이다.<br>currentTarget은 어떤 이벤트가 실행되었을 때, 그 이벤트의 주인이다.<br>그럼1에서 보면, div객체의 이벤트는 div객체의 것이고, body객체의 이벤트는 body객체의 것, html객체의 이벤트는 html객체의 것이므로, 순서대로 div, body, html이 된다.   </p>
+<p>target과 currentTarget이 일치하는 경우, 이벤트 전파 단계 중 2. 타깃 단계(target phase)에서 실행된다.<br>target과 currentTarget이 일치하지 않는 경우, 1. 캡쳐링 단계(capturing phase)와 3. 버블링 단계(bubbling phase) 중 어느 단계에서 발생시킬 지 선택할 수 있다. (택1이다.)<br>선택하는 방법은 아래와 같이 addEventListener()를 사용하여 이벤트를 등록할 때, 필수가 아닌 옵션 매개변수인 useCapture를 이용하는 것이다.<br>useCapture에 인수를 할당하지 않으면, 기본값 false로 들어가 3. 버블링 단계(bubbling phase)에서 이벤트를 발생시키겠다고 지정하는 것이다.<br>true를 넣어주면 캡쳐링 단계(capturing phase)에서 이벤트를 발생시키겠다고 지정할 수 있다.<br>EventTarget.addEventListener(‘event Type’, functionName, [,useCapture])<sup><a href="#footnote_2">2</a></sup></p>
+<h2 id="예시1"><a href="#예시1" class="headerlink" title="예시1"></a>예시1</h2><p><a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev/pen/oNZymJo">코드펜에서 보기</a></p>
 <p class="codepen" data-height="406" data-theme-id="light" data-default-tab="js,result" data-user="hyunjungc-dev" data-slug-hash="oNZymJo" style="height: 406px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Event Propagation Example">
   <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev/pen/oNZymJo">
   Event Propagation Example</a> by HyunJungC-Dev (<a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev">@hyunjungc-dev</a>)
@@ -261,13 +271,23 @@
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-<p><a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev/pen/XWMBWRa">코드펨에서 보기</a></p>
+<p>위 코드를 실행하고 div를 클릭한다면 그림 2와 같이 이벤트 전파가 이루어진다.<br><img src="/img/EventPropagation/EventPropagationExample01-1.jpg" alt="그림 2"><br>코드를 보면 div, body, html 모두 click 이벤트를 가지고 있어 div를 클릭했을 때 body와 html의 click 이벤트도 영향을 받게 된다.<br>addEventListener()를 보면 div, body, html 모두 useCapture에 인수가 할당되지 않으므로 기본값 false를 가진다.<br>따라서 target과 currentTarget이 일치하지 않는 body와 html의 경우 3. 버블링 단계(bubbling phase)에서 이벤트를 발생시키도록 코딩되어 있다.   </p>
+<p>div는 target과 currentTarget이 일치하므로, 2. 타깃 단계(target phase)에서 이벤트를 발생시킨다.  </p>
+<p>이벤트 전파는 항상 1. 캡쳐링 단계(capturing phase) -&gt; 2. 타깃 단계(target phase) -&gt; 3. 버블링 단계(bubbling phase) 순서대로 이루어진다.<br>위의 경우, 1. 캡쳐링 단계(capturing phase)에서 실행될 이벤트는 없다.<br>다음으로, 2. 타깃 단계(target phase)에서 div의 click 이벤트가 실행되어 Console에 ‘DIV 클릭 이벤트 발생’이라는 문자열을 찍게 된다.<br>마지막으로 3. 버블링 단계(bubbling phase)에서는 하위 요소-&gt;상위 요소 방향으로 진행되므로 body의 click 이벤트가 먼저 실행되어 Console에 ‘BODY 클릭 이벤트 발생’이라는 문자열을 찍는다. 그 다음 html의 click 이벤트가 실행되어 Console에 ‘HTML 클릭 이벤트 발생’이라는 문자열을 찍게 된다.</p>
+<h2 id="예시2"><a href="#예시2" class="headerlink" title="예시2"></a>예시2</h2><p>그럼 div가 아닌 body를 클릭하면 어떻게 될까?<br>그림 3과 같은 순서대로 이벤트 전파, 이벤트 실행이 일어나게 된다.<br><img src="/img/EventPropagation/EventPropagationExample01-2.jpg" alt="그림 3"></p>
+<h2 id="예시3"><a href="#예시3" class="headerlink" title="예시3"></a>예시3</h2><p><a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev/pen/XWMBWRa">코드펜에서 보기</a></p>
 <p class="codepen" data-height="414" data-theme-id="light" data-default-tab="js,result" data-user="hyunjungc-dev" data-slug-hash="XWMBWRa" style="height: 414px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Event Propagation Example01">
   <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev/pen/XWMBWRa">
   Event Propagation Example01</a> by HyunJungC-Dev (<a target="_blank" rel="noopener" href="https://codepen.io/hyunjungc-dev">@hyunjungc-dev</a>)
   on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<p>이제 1. 캡쳐링 단계(capturing phase)에 실행되는 이벤트가 있는 경우를 보자.<br>코드를 보면 <strong>body</strong>.addListener()의 useCapture에 true를 넘겨준다. 즉, body의 이벤트는 1. 캡쳐링 단계(capturing phase)에 실행되도록 설정했다.<br><img src="/img/EventPropagation/EventPropagationExample02.jpg" alt="그림 4"><br>그러면 그림 4와 같이 1. 캡쳐링 단계(capturing phase)에서 body의 이벤트 객체가 실행되고, 2. 타깃 단계(target phase)에서 div의 이벤트 객체가 실행된다. 그리고 마지막으로 3. 버블링 단계(bubbling phase)에서 html의 이벤트 객체가 실행되어 Console에는 ‘BODY 클릭 이벤트 발생’, ‘DIV 클릭 이벤트 발생’, ‘HTML 클릭 이벤트 발생’ 순으로 찍히게 된다.</p>
+<hr>
+<p><a name="footnote_1">1</a>: 모던 자바스크립트 Deep Dive p779 40.6 이벤트 전파<br><a name="footnote_2">2</a>: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener">MDN EventTarget.addEventListener()</a></p>
+
       
     </div>
 
