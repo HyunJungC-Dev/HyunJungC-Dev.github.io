@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -199,6 +199,115 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/07/sys-maxsize-%EC%B5%9C%EB%8C%80%EC%A0%95%EC%88%98%EA%B0%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/07/sys-maxsize-%EC%B5%9C%EB%8C%80%EC%A0%95%EC%88%98%EA%B0%92/" class="post-title-link" itemprop="url">sys.maxsize - 최대정수값</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-07 11:37:16" itemprop="dateCreated datePublished" datetime="2021-04-07T11:37:16+09:00">2021-04-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-06-08 19:47:33" itemprop="dateModified" datetime="2021-06-08T19:47:33+09:00">2021-06-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><blockquote>
+<p>파이썬 알고리즘 인터뷰 p638 의 카데인 알고리즘을 보는데<br>best_sum = -sys.maxsize 라고 선언하는 부분을 처음봐서<br>sys.maxsize에 대해 찾아보고 정리하였다.</p>
+</blockquote>
+<h1 id="sys-maxsize"><a href="#sys-maxsize" class="headerlink" title="sys.maxsize"></a>sys.maxsize</h1><ul>
+<li>python3에서 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수를 리턴하는 것이다.</li>
+<li>즉, 이 sys.maxsize 크기의 List가 python3에서 만들 수 있는 최대 크기의 List이다.</li>
+<li>일반적으로 32비트 플랫폼에서는 2^31 - 1 이고</li>
+<li>64비트 플랫폼에서는 2^63 - 1 이다.</li>
+</ul>
+<hr>
+<h2 id="python3에서-int-자료형-정수-최대값-최소값"><a href="#python3에서-int-자료형-정수-최대값-최소값" class="headerlink" title="python3에서 int 자료형 정수 최대값, 최소값"></a>python3에서 int 자료형 정수 최대값, 최소값</h2><ul>
+<li>maximum = sys.maxsize</li>
+<li>minimum = -(sys.maxsize+1)</li>
+</ul>
+<hr>
+<h2 id="float-‘inf’-와의-차이"><a href="#float-‘inf’-와의-차이" class="headerlink" title="float(‘inf’) 와의 차이"></a>float(‘inf’) 와의 차이</h2><p>파이썬에서 코딩할 때 아주 큰 값을 잡기 위해 float(‘inf’)를 자주 사용하는데, 이는 float 자료형의 양의 무한대값이다.<br>무한대 값과 Py_ssize_t 타입이 가질 수 있는 가장 큰 정수 값은 서로 의미하는 것이 다르다.</p>
+<hr>
+<h2 id="float-자료형의-양의-무한대-값과-음의-무한대-값"><a href="#float-자료형의-양의-무한대-값과-음의-무한대-값" class="headerlink" title="float 자료형의 양의 무한대 값과 음의 무한대 값"></a>float 자료형의 양의 무한대 값과 음의 무한대 값</h2><p>maximum = float(‘inf’)<br>minimum = float(‘-inf’)</p>
+<hr>
+<h2 id="int-float-‘inf’-혹은-int-float-‘-inf’-는-불가하다"><a href="#int-float-‘inf’-혹은-int-float-‘-inf’-는-불가하다" class="headerlink" title="int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다."></a>int(float(‘inf’)) 혹은 int(float(‘-inf’)) 는 불가하다.</h2><blockquote>
+<p>OverflowError : cannot convert to float infinity to integer</p>
+</blockquote>
+<p>위와 같은 오류 메세지가 뜬다.</p>
+<hr>
+<h2 id="참고-문서"><a href="#참고-문서" class="headerlink" title="참고 문서"></a>참고 문서</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/sys.html#sys.maxsize">https://docs.python.org/3/library/sys.html#sys.maxsize</a><br>An integer giving the maximum value a variable of type Py_ssize_t can take.<br>It’s usually<br>2^31 - 1 on a 32-bit platform<br>2^63 - 1 on a 64-bit platform.</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0353/">https://www.python.org/dev/peps/pep-0353/</a><br>PEP 353 – Using ssize_t as the index type</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/07/from-typing-import-List-%ED%98%95-%ED%9E%8C%ED%8A%B8-%EC%A7%80%EC%9B%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -222,17 +331,23 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-04-07 11:09:57 / Modified: 13:06:57" itemprop="dateCreated datePublished" datetime="2021-04-07T11:09:57+09:00">2021-04-07</time>
+      <time title="Created: 2021-04-07 11:09:57" itemprop="dateCreated datePublished" datetime="2021-04-07T11:09:57+09:00">2021-04-07</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-06-08 19:47:23" itemprop="dateModified" datetime="2021-06-08T19:47:23+09:00">2021-06-08</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-python/" itemprop="url" rel="index"><span itemprop="name">TIL/python</span></a>
+          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
         </span>
     </span>
 
@@ -435,7 +550,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 21:28:02" itemprop="dateModified" datetime="2021-04-09T21:28:02+09:00">2021-04-09</time>
+        <time title="Modified: 2021-06-08 19:47:19" itemprop="dateModified" datetime="2021-06-08T19:47:19+09:00">2021-06-08</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -443,7 +558,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-python/" itemprop="url" rel="index"><span itemprop="name">TIL/python</span></a>
+          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
         </span>
     </span>
 
@@ -548,7 +663,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-10 21:56:40" itemprop="dateModified" datetime="2021-04-10T21:56:40+09:00">2021-04-10</time>
+        <time title="Modified: 2021-06-08 19:47:04" itemprop="dateModified" datetime="2021-06-08T19:47:04+09:00">2021-06-08</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -556,7 +671,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-python/" itemprop="url" rel="index"><span itemprop="name">TIL/python</span></a>
+          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
         </span>
     </span>
 
