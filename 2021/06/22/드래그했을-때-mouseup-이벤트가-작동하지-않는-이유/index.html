@@ -31,7 +31,7 @@
 <meta property="og:description" content="드래그했을 때 mouseup 이벤트가 작동하지 않는 이유draggable이 false든 true든 요소를 잡아 끌고 놓았을 때는 mouseup 이벤트가 발생하지 않기 때문 마우스 왼쪽 클릭 시 mousedown mouseup click 이벤트 순으로 발생한다.  마우스 오른쪽 클릭 시 mousedown mouseup contextmenu 이벤트 순으로 발생">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-21T15:56:39.000Z">
-<meta property="article:modified_time" content="2021-06-22T00:52:07.060Z">
+<meta property="article:modified_time" content="2021-06-22T11:34:59.209Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -160,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -230,7 +230,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-06-22 00:56:39 / Modified: 09:52:07" itemprop="dateCreated datePublished" datetime="2021-06-22T00:56:39+09:00">2021-06-22</time>
+      <time title="Created: 2021-06-22 00:56:39 / Modified: 20:34:59" itemprop="dateCreated datePublished" datetime="2021-06-22T00:56:39+09:00">2021-06-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,6 +270,13 @@
 <li>mousedown</li>
 <li>dragend 이벤트 순으로 발생한다.</li>
 </ol>
+<p>mouseup 이벤트를 document에 걸어준다.</p>
+<p>selectstart 를 꺼줘야하는 건 블록 잡히고 잡아 끌면 dragstart가 시작되므로<br>근데 해당 요소에서만 꺼주면<br>다른 요소에서부터 잡아 끌면 블록 잡힌다.</p>
+<p>요소를 잡고 드래그하면<br>블록이 씌워지는 문제가</p>
+<p>드래그할 버튼을 따로 뺀다.</p>
+<p>child 와 children 차이 -&gt; TIL</p>
+<p>DocumentOrShadowRoot.activeElement</p>
+<p>pointer-event none을 주니 이걸 확인할 필요가 없음.</p>
 
     </div>
 
