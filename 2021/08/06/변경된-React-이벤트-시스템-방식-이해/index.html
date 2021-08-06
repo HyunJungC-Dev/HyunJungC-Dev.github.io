@@ -23,20 +23,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="정리 이유백준 11723번 집합을 풀 때, 파이썬 입력함수에 따라 시간 초과가 나고 안 나고가 결정될 만큼 시간 차이가 있어 각 입력함수별 차이를 익히기 위해 정리해둔다. input() 문자열로 입력받는다. list(map(int, input().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.  sys.stdin.readline() impo">
+<meta name="description" content="정리이유변경된 리액트 이벤트 시스템 방식이 어떤 이점이 있는지 이해가 가지 않았어서 이해 후 정리. 변경된 React 이벤트 시스템 방식 123456 &lt;body&gt;    &lt;div id&#x3D;&quot;root1&quot;&gt;&lt;&#x2F;div&gt;    &lt;div id&#x3D;&quot;root2&quot;&gt;&lt;&#x2F;div&gt;    &lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="파이썬 입력함수 비교">
-<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/index.html">
+<meta property="og:title" content="변경된 React 이벤트 시스템 방식 이해">
+<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/08/06/%EB%B3%80%EA%B2%BD%EB%90%9C-React-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%A9%EC%8B%9D-%EC%9D%B4%ED%95%B4/index.html">
 <meta property="og:site_name" content="HyunJungC Blog">
-<meta property="og:description" content="정리 이유백준 11723번 집합을 풀 때, 파이썬 입력함수에 따라 시간 초과가 나고 안 나고가 결정될 만큼 시간 차이가 있어 각 입력함수별 차이를 익히기 위해 정리해둔다. input() 문자열로 입력받는다. list(map(int, input().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.  sys.stdin.readline() impo">
+<meta property="og:description" content="정리이유변경된 리액트 이벤트 시스템 방식이 어떤 이점이 있는지 이해가 가지 않았어서 이해 후 정리. 변경된 React 이벤트 시스템 방식 123456 &lt;body&gt;    &lt;div id&#x3D;&quot;root1&quot;&gt;&lt;&#x2F;div&gt;    &lt;div id&#x3D;&quot;root2&quot;&gt;&lt;&#x2F;div&gt;    &lt;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-27T16:22:42.000Z">
-<meta property="article:modified_time" content="2021-08-06T10:23:09.500Z">
+<meta property="og:image" content="https://hyunjungc.dev.github.io/img/ReactEventMathod/ReactEventMathod.png">
+<meta property="article:published_time" content="2021-08-06T08:28:40.000Z">
+<meta property="article:modified_time" content="2021-08-06T10:34:18.833Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyunjungc.dev.github.io/img/ReactEventMathod/ReactEventMathod.png">
 
 
-<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/">
+<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/08/06/%EB%B3%80%EA%B2%BD%EB%90%9C-React-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%A9%EC%8B%9D-%EC%9D%B4%ED%95%B4/">
 
 
 <script class="page-configurations">
@@ -48,7 +50,7 @@
     lang   : 'en'
   };
 </script>
-<title>파이썬 입력함수 비교 | HyunJungC Blog</title>
+<title>변경된 React 이벤트 시스템 방식 이해 | HyunJungC Blog</title>
   
 
 
@@ -147,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%95%EB%A6%AC-%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">정리 이유</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input"><span class="nav-number">2.</span> <span class="nav-text">input()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys-stdin-readline"><span class="nav-number">3.</span> <span class="nav-text">sys.stdin.readline()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys-stdin-readline-%EC%9D%B8%EC%88%98"><span class="nav-number">4.</span> <span class="nav-text">sys.stdin.readline(인수)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B2%B0%EB%A1%A0"><span class="nav-number"></span> <span class="nav-text">결론</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%95%EB%A6%AC%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">정리이유</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B3%80%EA%B2%BD%EB%90%9C-React-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%A9%EC%8B%9D"><span class="nav-number"></span> <span class="nav-text">변경된 React 이벤트 시스템 방식</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%A8%EA%BB%98-%EB%B3%B8-%EC%9E%90%EB%A3%8C"><span class="nav-number">1.</span> <span class="nav-text">함께 본 자료</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,7 +207,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/%EB%B3%80%EA%B2%BD%EB%90%9C-React-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%A9%EC%8B%9D-%EC%9D%B4%ED%95%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -218,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          파이썬 입력함수 비교
+          변경된 React 이벤트 시스템 방식 이해
         </h1>
 
         <div class="post-meta-container">
@@ -228,24 +230,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-05-28 01:22:42" itemprop="dateCreated datePublished" datetime="2021-05-28T01:22:42+09:00">2021-05-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-06 19:23:09" itemprop="dateModified" datetime="2021-08-06T19:23:09+09:00">2021-08-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
-        </span>
+      <time title="Created: 2021-08-06 17:28:40 / Modified: 19:34:18" itemprop="dateCreated datePublished" datetime="2021-08-06T17:28:40+09:00">2021-08-06</time>
     </span>
 
   
@@ -258,26 +245,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h2><p><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/11723">백준 11723번 집합</a>을 풀 때, 파이썬 입력함수에 따라 시간 초과가 나고 안 나고가 결정될 만큼 시간 차이가 있어 각 입력함수별 차이를 익히기 위해 정리해둔다.</p>
-<h2 id="input"><a href="#input" class="headerlink" title="input()"></a>input()</h2><ul>
-<li><strong>문자열</strong>로 입력받는다.</li>
-<li>list(map(int, input().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.</li>
+        <h2 id="정리이유"><a href="#정리이유" class="headerlink" title="정리이유"></a>정리이유</h2><p>변경된 리액트 이벤트 시스템 방식이 어떤 이점이 있는지 이해가 가지 않았어서 이해 후 정리.</p>
+<h1 id="변경된-React-이벤트-시스템-방식"><a href="#변경된-React-이벤트-시스템-방식" class="headerlink" title="변경된 React 이벤트 시스템 방식"></a>변경된 React 이벤트 시스템 방식</h1><p><img src="/img/ReactEventMathod/ReactEventMathod.png" alt="변경된 React 이벤트 시스템 방식 @RachelNabors"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root1&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root2&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root3&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root4&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>위와 같이 root가 여러 개가 있을 때 각 root에서 다른 버전의 React를 쓰는 경우, 바뀐 방식에서 문제가 개선되었다.</p>
+<h2 id="함께-본-자료"><a href="#함께-본-자료" class="headerlink" title="함께 본 자료"></a>함께 본 자료</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://d2.naver.com/helloworld/7226235">네이버 D2 - 2020년과 이후 JavaScript의 동향 - 라이브러리와 프레임워크 1</a></li>
+<li><a target="_blank" rel="noopener" href="https://yamoo9.notion.site/c512b093391143379e6ab42edb649365">yamoo 강사님 React 수업 - 이벤트 핸들링</a></li>
 </ul>
-<h2 id="sys-stdin-readline"><a href="#sys-stdin-readline" class="headerlink" title="sys.stdin.readline()"></a>sys.stdin.readline()</h2><ul>
-<li><strong>import sys</strong> 를 해주어야 한다.</li>
-<li><strong>문자열</strong>로 입력받는다.</li>
-<li>readline()은 <strong>문자열 마지막에 개행문자(줄바꿈 문자\n)을 포함</strong>하고 있음을 주의하자.</li>
-<li>sys.stdin.readline()**.rstrip()**으로 오른쪽 공백을 삭제할 수 있다.</li>
-<li>sys.stdin.readline()**.lstrip()**으로 왼쪽 공백을 삭제할 수 있다.</li>
-<li>sys.stdin.readline()**.strip()**으로 오른쪽, 왼쪽 공백을 삭제할 수 있다.</li>
-<li>(이 때 공백에는 개행문자, 스페이스 바 등이 해당된다.)</li>
-<li>list(map(int, stdin.readline().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.</li>
-</ul>
-<h2 id="sys-stdin-readline-인수"><a href="#sys-stdin-readline-인수" class="headerlink" title="sys.stdin.readline(인수)"></a>sys.stdin.readline(인수)</h2><ul>
-<li>인수에는 한번에 읽어들일 문자의 수를 넣어준다.</li>
-<li>그럼 그 숫자만큼의 길이만 읽어들인다.  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num = sys.stdin.readline(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 입력 : abcdef</span></span><br><span class="line"><span class="comment"># print(num) 결과 : ab</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h1><p>알고리즘 최적화를 위해서 input() 대신 sys.stdin.readline()을 사용하는 것이 좋다.</p>
 
     </div>
 
@@ -291,13 +266,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/05/28/11723%EB%B2%88-%EC%A7%91%ED%95%A9-%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0/" rel="prev" title="11723번: 집합 (비트 마스크 없이 시간 초과 해결)">
-                  <i class="fa fa-chevron-left"></i> 11723번: 집합 (비트 마스크 없이 시간 초과 해결)
+                <a href="/2021/08/06/React%EC%9D%98-%ED%95%A9%EC%84%B1-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9D%B4%EC%A0%90/" rel="prev" title="React의 합성 이벤트 이점">
+                  <i class="fa fa-chevron-left"></i> React의 합성 이벤트 이점
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/06/08/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%A0%84%ED%8C%8C-Event-Propagation/" rel="next" title="이벤트 전파 Event Propagation">
-                  이벤트 전파 Event Propagation <i class="fa fa-chevron-right"></i>
+                <a href="/2021/08/06/Singleton-Pattern/" rel="next" title="Singleton Pattern">
+                  Singleton Pattern <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

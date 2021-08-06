@@ -31,7 +31,7 @@
 <meta property="og:description" content="정리 이유프로그래밍 문제를 해결하기 위해 필요해서 Node() 클래스를 직접 정의해서 사용하였는데, 그 노드가 담긴 리스트를 정렬하려니,그냥 sorted()를 쓰면   TypeError: ‘&lt;’ not supported between instances of ‘Node’ and ‘Node’  와 같은 에러 메세지가 뜬다.   Node 클래스는 직접 만든">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-09T06:49:36.000Z">
-<meta property="article:modified_time" content="2021-06-08T10:47:30.424Z">
+<meta property="article:modified_time" content="2021-08-06T10:20:56.568Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%A0%95%EB%A6%AC-%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">정리 이유</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sorted-%EC%A0%95%EB%A0%AC-%EC%88%9C%EC%84%9C-%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">sorted() 정렬 순서 지정하기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list"><span class="nav-number">2.1.</span> <span class="nav-text">sorted(list)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list-reversed-True"><span class="nav-number">2.2.</span> <span class="nav-text">sorted(list, reversed&#x3D;True)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list-key-function"><span class="nav-number">2.3.</span> <span class="nav-text">sorted(list, key&#x3D;function())</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list-reversed-True-key-function"><span class="nav-number">2.4.</span> <span class="nav-text">sorted(list, reversed&#x3D;True, key&#x3D;function())</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%95%EB%A6%AC-%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.</span> <span class="nav-text">정리 이유</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sorted-%EC%A0%95%EB%A0%AC-%EC%88%9C%EC%84%9C-%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text">sorted() 정렬 순서 지정하기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list"><span class="nav-number">1.</span> <span class="nav-text">sorted(list)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list-reversed-True"><span class="nav-number">2.</span> <span class="nav-text">sorted(list, reversed&#x3D;True)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list-key-function"><span class="nav-number">3.</span> <span class="nav-text">sorted(list, key&#x3D;function())</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted-list-reversed-True-key-function"><span class="nav-number">4.</span> <span class="nav-text">sorted(list, reversed&#x3D;True, key&#x3D;function())</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -160,13 +160,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -236,7 +236,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-08 19:47:30" itemprop="dateModified" datetime="2021-06-08T19:47:30+09:00">2021-06-08</time>
+        <time title="Modified: 2021-08-06 19:20:56" itemprop="dateModified" datetime="2021-08-06T19:20:56+09:00">2021-08-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +258,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p>프로그래밍 문제를 해결하기 위해 필요해서 Node() 클래스를 직접 정의해서 사용하였는데, 그 노드가 담긴 리스트를 정렬하려니,<br>그냥 sorted()를 쓰면 </p>
+        <h2 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h2><p>프로그래밍 문제를 해결하기 위해 필요해서 Node() 클래스를 직접 정의해서 사용하였는데, 그 노드가 담긴 리스트를 정렬하려니,<br>그냥 sorted()를 쓰면 </p>
 <blockquote>
 <p>TypeError: ‘&lt;’ not supported between instances of ‘Node’ and ‘Node’</p>
 </blockquote>

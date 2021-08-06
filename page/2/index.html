@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -190,6 +190,359 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/01/HTMLCollection-VS-NodeList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/01/HTMLCollection-VS-NodeList/" class="post-title-link" itemprop="url">HTMLCollection VS NodeList</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-01 19:50:59" itemprop="dateCreated datePublished" datetime="2021-08-01T19:50:59+09:00">2021-08-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-02 16:01:34" itemprop="dateModified" datetime="2021-08-02T16:01:34+09:00">2021-08-02</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-JavaScript/" itemprop="url" rel="index"><span itemprop="name">TIL/JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h2><p>HTMLCollection 객체와 NodeList 객체를 배열로 변환해서 사용하는 이유를 기억하기 위해</p>
+<h1 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h1><p><strong>노드 객체의 상태 변경과 상관없이 안전하게 DOM 컬렉션을 사용하려면 HTMLCollection 객체나 NodeList 객체 모두 배열로 변환하여 사용하는 것을 권장</strong>한다.<br>둘 모두 유사 배열 객체이면서 이터러블이므로 <strong>스프레드 문법이나 Array.from 메서드를 사용하면 간단히 배열로 변환</strong>할 수 있다.  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/06/22/IE%EC%97%90%EC%84%9C-forEach-%EC%98%A4%EB%A5%98%EC%9B%90%EC%9D%B8/">IE에서 forEach 오류원인</a>과 같은 오류도 발생할 수 있으므로 배열로 변환하여 사용해야 한다.  </li>
+</ul>
+<h2 id="HTMLCollection"><a href="#HTMLCollection" class="headerlink" title="HTMLCollection"></a>HTMLCollection</h2><ul>
+<li>DOM API가 여러 개의 결과값을 반환하기 위한 DOM 컬렉션 객체</li>
+<li><strong>언제나 노드 객체의 상태 변화를 실시간으로 반영하는 살아있는(live) 객체이다.</strong></li>
+<li>getElementsByTagName, getElementByClassName 메서드가 반환</li>
+<li><strong>유사 배열 객체이면서 이터러블</strong>이다.</li>
+<li><strong>따라서 HTMLCollection 객체를 배열로 변환하면 부작용을 발생시키지 않고, 유용한 배열의 고차함수들을 사용</strong>할 수 있다.</li>
+</ul>
+<h2 id="NodeList"><a href="#NodeList" class="headerlink" title="NodeList"></a>NodeList</h2><ul>
+<li>DOM API가 여러 개의 결과값을 반환하기 위한 DOM 컬렉션 객체</li>
+<li><strong>대부분의 경우 노드 객체의 상태 변화를 실시간으로 반영하지 않고 과거의 정적 상태를 유지하는 non-live 객체로 동작하지만 경우에 따라 live 객체로 동작할 때가 있다.</strong></li>
+<li>querySelectorAll 메서드가 반환하는 경우, non-live 객체로 동작한다.</li>
+<li>Node.prototype.childNodes    노드 탐색 프로터티가 반환하는 경우, </li>
+<li>NodeList 객체는 NodeList.prototype.forEach, item, entries, keys, values 등의 메서드를 상속받아 사용할 수 있다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/07/27/260-%EB%AF%B8%EB%9E%98%EC%97%90-Magic%EC%9D%B4-%EB%90%A0-%EC%88%98%EB%8F%84-%EC%9E%88%EB%8A%94-CSS-Query-Units/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/27/260-%EB%AF%B8%EB%9E%98%EC%97%90-Magic%EC%9D%B4-%EB%90%A0-%EC%88%98%EB%8F%84-%EC%9E%88%EB%8A%94-CSS-Query-Units/" class="post-title-link" itemprop="url">#260: 미래에 Magic이 될 수도 있는 CSS Query Units</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-27 10:49:56 / Modified: 17:36:39" itemprop="dateCreated datePublished" datetime="2021-07-27T10:49:56+09:00">2021-07-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Email-Newsletters-CSS-tricks/" itemprop="url" rel="index"><span itemprop="name">Email-Newsletters/CSS-tricks</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>CSS Query Unit은 아직 CSS에 없는 것이지만 </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/29/Math-%EB%82%B4%EC%9E%A5-%EA%B0%9D%EC%B2%B4%EC%9D%98-Property%EC%99%80-Method/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/29/Math-%EB%82%B4%EC%9E%A5-%EA%B0%9D%EC%B2%B4%EC%9D%98-Property%EC%99%80-Method/" class="post-title-link" itemprop="url">Math 내장 객체의 Property와 Method</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-29 10:56:11 / Modified: 11:07:24" itemprop="dateCreated datePublished" datetime="2021-06-29T10:56:11+09:00">2021-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-JavaScript/" itemprop="url" rel="index"><span itemprop="name">TIL/JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h2><p>자바스크립트를 이용해 알고리즘 문제 풀이를 시작할 때 많이 쓰일 Math의 property와 method를 미리 mdn에서 조사하고 기억하기 위해서</p>
+<h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><ul>
+<li>Math는 <strong>수학적인 상수와 함수를 위한 property와 method를 가지는 내장 객체</strong>이다. (함수 객체가 아니다.)    </li>
+<li>Math의 모든 property와 method는 <strong>정적</strong>이다.<br> = <strong>Math.property로 참조, Math.method로 호출</strong>한다.</li>
+<li>Math는 Number 자료형만 지원하며 BigInt와는 사용할 수 없다.</li>
+</ul>
+<h2 id="Property"><a href="#Property" class="headerlink" title="Property"></a>Property</h2><h3 id="Math-PI"><a href="#Math-PI" class="headerlink" title="Math.PI"></a>Math.PI</h3><p>원의 둘레와 지름의 비율. 약 3.14159</p>
+<h3 id="Math-E"><a href="#Math-E" class="headerlink" title="Math.E"></a>Math.E</h3><p>오일러의 상수이며 자연로그의 밑. 약 2.718</p>
+<h3 id="Math-LN2"><a href="#Math-LN2" class="headerlink" title="Math.LN2"></a>Math.LN2</h3><p>2의 자연 로그. 약 0.693</p>
+<h3 id="Math-LN10"><a href="#Math-LN10" class="headerlink" title="Math.LN10"></a>Math.LN10</h3><p>10의 자연로그. 약 2.303</p>
+<h3 id="Math-LOG2E"><a href="#Math-LOG2E" class="headerlink" title="Math.LOG2E"></a>Math.LOG2E</h3><p>밑이 2인 로그 E. 약 1.443</p>
+<h3 id="Math-SQRT1-2"><a href="#Math-SQRT1-2" class="headerlink" title="Math.SQRT1_2"></a>Math.SQRT1_2</h3><p>1/2의 제곱근. 약 0.707</p>
+<h3 id="Math-SQRT2"><a href="#Math-SQRT2" class="headerlink" title="Math.SQRT2"></a>Math.SQRT2</h3><p>2의 제곱근. 약 1.414</p>
+<hr>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h2 id="Math-abs-x"><a href="#Math-abs-x" class="headerlink" title="Math.abs(x)"></a><strong>Math.abs(x)</strong></h2><p>숫자 x의 절댓값을 반환</p>
+<h2 id="Math-ceil-x"><a href="#Math-ceil-x" class="headerlink" title="Math.ceil(x)"></a><strong>Math.ceil(x)</strong></h2><p>인수보다 크거나 같은 수 중에서 가장 작은 정수를 반환</p>
+<h2 id="Math-floor-x"><a href="#Math-floor-x" class="headerlink" title="Math.floor(x)"></a><strong>Math.floor(x)</strong></h2><p>인수보다 작거나 같은 수중에서 가장 큰 정수를 반환</p>
+<h2 id="Math-max-x-y-…"><a href="#Math-max-x-y-…" class="headerlink" title="Math.max([x[, y[, …]]])"></a><strong>Math.max([x[, y[, …]]])</strong></h2><p>0개 이상의 인수 중에서 제일 큰 수를 반환</p>
+<h2 id="Math-min-x-y-…"><a href="#Math-min-x-y-…" class="headerlink" title="Math.min([x[, y[, …]]])"></a><strong>Math.min([x[, y[, …]]])</strong></h2><p>0개 이상의 인수 중에서 제일 작은 수를 반환</p>
+<h2 id="Math-pow-x-y"><a href="#Math-pow-x-y" class="headerlink" title="Math.pow(x,y)"></a><strong>Math.pow(x,y)</strong></h2><p>x의 y 제곱을 반환</p>
+<h2 id="Math-random"><a href="#Math-random" class="headerlink" title="Math.random()"></a><strong>Math.random()</strong></h2><p>0과 1 사이의 난수를 반환</p>
+<h2 id="Math-round-x"><a href="#Math-round-x" class="headerlink" title="Math.round(x)"></a>Math.round(x)</h2><p>숫자에서 가장 가까운 정수를 반환</p>
+<h2 id="삼각함수"><a href="#삼각함수" class="headerlink" title="삼각함수"></a>삼각함수</h2><ul>
+<li>Math.acos(x)</li>
+<li>Math.acosh(x)</li>
+<li>Math.asin(x)</li>
+<li>Math.asinh(x)</li>
+<li>Math.atan(x)</li>
+<li>Math.atanh(x)</li>
+<li>Math.atan2(y,x)</li>
+<li>Math.cos(x)</li>
+<li>Math.cosh(x)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/28/Express-Framework-%EA%B8%B0%EB%B3%B8-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-app-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/28/Express-Framework-%EA%B8%B0%EB%B3%B8-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-app-js/" class="post-title-link" itemprop="url">Express Framework 기본 이해하기 app.js</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-28 19:38:35 / Modified: 19:39:25" itemprop="dateCreated datePublished" datetime="2021-06-28T19:38:35+09:00">2021-06-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-JavaScript/" itemprop="url" rel="index"><span itemprop="name">TIL/JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="app-js-코드"><a href="#app-js-코드" class="headerlink" title="app.js 코드"></a>app.js 코드</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fetchTodos = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  xhr.open(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;/todos&#x27;</span>);</span><br><span class="line">  xhr.send();</span><br><span class="line"></span><br><span class="line">  xhr.onload = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(xhr.response));</span><br><span class="line">      setTodos(<span class="built_in">JSON</span>.parse(xhr.response));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">&#x27;Error&#x27;</span>, xhr.status, xhr.statusText);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -728,374 +1081,6 @@
 <hr>
 <p><a name="footnote_1">1</a>: 모던 자바스크립트 Deep Dive p779 40.6 이벤트 전파<br><a name="footnote_2">2</a>: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener">MDN EventTarget.addEventListener()</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/" class="post-title-link" itemprop="url">파이썬 입력함수 비교</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-28 01:22:42" itemprop="dateCreated datePublished" datetime="2021-05-28T01:22:42+09:00">2021-05-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-08 19:47:16" itemprop="dateModified" datetime="2021-06-08T19:47:16+09:00">2021-06-08</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/11723">백준 11723번 집합</a>을 풀 때, 파이썬 입력함수에 따라 시간 초과가 나고 안 나고가 결정될 만큼 시간 차이가 있어 각 입력함수별 차이를 익히기 위해 정리해둔다.</p>
-<h2 id="input"><a href="#input" class="headerlink" title="input()"></a>input()</h2><ul>
-<li><strong>문자열</strong>로 입력받는다.</li>
-<li>list(map(int, input().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.</li>
-</ul>
-<h2 id="sys-stdin-readline"><a href="#sys-stdin-readline" class="headerlink" title="sys.stdin.readline()"></a>sys.stdin.readline()</h2><ul>
-<li><strong>import sys</strong> 를 해주어야 한다.</li>
-<li><strong>문자열</strong>로 입력받는다.</li>
-<li>readline()은 <strong>문자열 마지막에 개행문자(줄바꿈 문자\n)을 포함</strong>하고 있음을 주의하자.</li>
-<li>sys.stdin.readline()**.rstrip()**으로 오른쪽 공백을 삭제할 수 있다.</li>
-<li>sys.stdin.readline()**.lstrip()**으로 왼쪽 공백을 삭제할 수 있다.</li>
-<li>sys.stdin.readline()**.strip()**으로 오른쪽, 왼쪽 공백을 삭제할 수 있다.</li>
-<li>(이 때 공백에는 개행문자, 스페이스 바 등이 해당된다.)</li>
-<li>list(map(int, stdin.readline().split(‘ ‘)))을 이용해 공백으로 나누어 받을 수 있다.</li>
-</ul>
-<h2 id="sys-stdin-readline-인수"><a href="#sys-stdin-readline-인수" class="headerlink" title="sys.stdin.readline(인수)"></a>sys.stdin.readline(인수)</h2><ul>
-<li>인수에는 한번에 읽어들일 문자의 수를 넣어준다.</li>
-<li>그럼 그 숫자만큼의 길이만 읽어들인다.  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num = sys.stdin.readline(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 입력 : abcdef</span></span><br><span class="line"><span class="comment"># print(num) 결과 : ab</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>알고리즘 최적화를 위해서 input() 대신 sys.stdin.readline()을 사용하는 것이 좋다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/05/28/11723%EB%B2%88-%EC%A7%91%ED%95%A9-%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/28/11723%EB%B2%88-%EC%A7%91%ED%95%A9-%EC%8B%9C%EA%B0%84-%EC%B4%88%EA%B3%BC-%ED%95%B4%EA%B2%B0/" class="post-title-link" itemprop="url">11723번: 집합 (비트 마스크 없이 시간 초과 해결)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-28 01:10:34" itemprop="dateCreated datePublished" datetime="2021-05-28T01:10:34+09:00">2021-05-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-06 11:25:33" itemprop="dateModified" datetime="2021-08-06T11:25:33+09:00">2021-08-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm-BOJ/" itemprop="url" rel="index"><span itemprop="name">Algorithm/BOJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="시간-초과-해결방법1"><a href="#시간-초과-해결방법1" class="headerlink" title="시간 초과 해결방법1"></a>시간 초과 해결방법1</h1><blockquote>
-<p>원래 이 문제는 비트마스크를 이용하는 문제이다.<br>비트 마스크를 이용하면 시간 초과가 나지 않는다.<br><a href="">비트 마스크를 사용한 풀이</a></p>
-</blockquote>
-<blockquote>
-<p><em><strong>TIL/python</strong></em><br><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/">https://hyunjungc-dev.github.io/2021/05/28/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98-%EB%B9%84%EA%B5%90/</a></p>
-<p><em><strong>이 문제의 경우, 비트 마스크를 사용하지 않은 풀이에서 파이썬의 입력함수에 따라 시간초과가 나기도하고 아니기도 해서 파이썬의 입력함수에 대해 TIL/python 에 정리했다. 원래는 비트 마스크를 이용하는 문제이니 그렇게 푸는 것이 맞다.</strong></em></p>
-</blockquote>
-<h1 id="시간-초과가-난-코드"><a href="#시간-초과가-난-코드" class="headerlink" title="시간 초과가 난 코드"></a>시간 초과가 난 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">S = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    cmd = <span class="built_in">input</span>()</span><br><span class="line">    <span class="keyword">if</span> cmd == <span class="string">&quot;all&quot;</span>:</span><br><span class="line">        S = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">21</span>)&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> cmd == <span class="string">&quot;empty&quot;</span>:</span><br><span class="line">        S = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        cmd, x = cmd.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        x = <span class="built_in">int</span>(x)</span><br><span class="line">        <span class="keyword">if</span> cmd == <span class="string">&quot;add&quot;</span>:</span><br><span class="line">            S.add(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;check&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">int</span>(x <span class="keyword">in</span> S))</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;remove&quot;</span>:</span><br><span class="line">            S.discard(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;toggle&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> x <span class="keyword">in</span> S:</span><br><span class="line">                S.discard(x)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                S.add(x)</span><br></pre></td></tr></table></figure>
-
-<h1 id="시간-초과가-난-이유"><a href="#시간-초과가-난-이유" class="headerlink" title="시간 초과가 난 이유"></a>시간 초과가 난 이유</h1><blockquote>
-<p>파이썬 입력함수 중 input()을 사용했기 때문</p>
-</blockquote>
-<h1 id="시간-초과-해결-방법-2"><a href="#시간-초과-해결-방법-2" class="headerlink" title="시간 초과 해결 방법 2"></a>시간 초과 해결 방법 2</h1><blockquote>
-<p>파이썬 입력함수 중 sys.stdin.readline()을 사용한다.<br>위 함수로 입력을 받을 경우 <strong>맨 끝에 개행문자(줄바꿈 문자 \n)을 포함하고 있음을 주의</strong>해야한다.</p>
-</blockquote>
-<h1 id="시간-초과를-해결한-코드"><a href="#시간-초과를-해결한-코드" class="headerlink" title="시간 초과를 해결한 코드"></a>시간 초과를 해결한 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">m = <span class="built_in">int</span>(sys.stdin.readline())</span><br><span class="line">S = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    cmd = sys.stdin.readline()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cmd == <span class="string">&quot;all\n&quot;</span>:</span><br><span class="line">        S = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">21</span>)&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> cmd == <span class="string">&quot;empty\n&quot;</span>:</span><br><span class="line">        S = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        cmd, x = cmd.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        x = <span class="built_in">int</span>(x)</span><br><span class="line">        <span class="keyword">if</span> cmd == <span class="string">&quot;add&quot;</span>:</span><br><span class="line">            S.add(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;check&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">int</span>(x <span class="keyword">in</span> S))</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;remove&quot;</span>:</span><br><span class="line">            S.discard(x)</span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">&quot;toggle&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> x <span class="keyword">in</span> S:</span><br><span class="line">                S.discard(x)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                S.add(x)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/05/11/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1-%EC%82%AC%EC%9A%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/11/%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8B%B1-%EC%82%AC%EC%9A%A9/" class="post-title-link" itemprop="url">문자열 뒤집기(슬라이싱 사용)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-11 10:25:19" itemprop="dateCreated datePublished" datetime="2021-05-11T10:25:19+09:00">2021-05-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-08 19:46:51" itemprop="dateModified" datetime="2021-06-08T19:46:51+09:00">2021-06-08</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p>문자열을 뒤집을 때 항상 list로 변환하여 list의 reverse()함수를 사용하였는데 보다 빠른 슬라이싱으로 가능한 방법이 있어서 기억하기 위해 정리해둔다.</p>
-<h1 id="슬라이싱을-사용하여-문자열-뒤집기"><a href="#슬라이싱을-사용하여-문자열-뒤집기" class="headerlink" title="슬라이싱을 사용하여 문자열 뒤집기"></a>슬라이싱을 사용하여 문자열 뒤집기</h1><blockquote>
-<p>s[::-1]</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/" class="post-title-link" itemprop="url">1967번:트리의 지름(RecursionError 해결)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-14 20:44:32" itemprop="dateCreated datePublished" datetime="2021-04-14T20:44:32+09:00">2021-04-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-06 11:25:14" itemprop="dateModified" datetime="2021-08-06T11:25:14+09:00">2021-08-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm-BOJ/" itemprop="url" rel="index"><span itemprop="name">Algorithm/BOJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="처음-접근"><a href="#처음-접근" class="headerlink" title="처음 접근"></a>처음 접근</h1><blockquote>
-<p><a href="">트리의 지름 구하는 공식</a>에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.</p>
-</blockquote>
-<h1 id="RecursionError-발생-원인"><a href="#RecursionError-발생-원인" class="headerlink" title="RecursionError 발생 원인"></a>RecursionError 발생 원인</h1><blockquote>
-<p>가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데 <br> 조건을 보면 노드의 개수 n(1 ≤ n ≤ 10,000) 이므로 <br> 최악의 경우 recursion이 10000번 일어나게 된다. <br> 파이썬에서 recursion 수는 최대 998번으로 제한하고 있으므로 <strong>maximum recurion에 의해 RecursionError</strong>가 발생한 것이다.</p>
-</blockquote>
-<h1 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h1><blockquote>
-<p>recursion으로 구현한 <strong>dfs()를 Iteration(stack)으로 구현</strong>해주면 된다.</p>
-</blockquote>
-<h2 id="RecurionError가-발생한-코드-dfs-를-recursion으로-구현"><a href="#RecurionError가-발생한-코드-dfs-를-recursion으로-구현" class="headerlink" title="RecurionError가 발생한 코드 - dfs()를 recursion으로 구현"></a>RecurionError가 발생한 코드 - dfs()를 recursion으로 구현</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">tree = [collections.defaultdict(<span class="built_in">int</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">path = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">visited = [<span class="literal">False</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">    p, c, w = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&#x27; &#x27;</span>))</span><br><span class="line">    tree[p][c] = w</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">start, before_node, path_length</span>):</span></span><br><span class="line">    <span class="keyword">if</span> visited[start] <span class="keyword">is</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    visited[start] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> tree[start][before_node] != <span class="number">0</span>:</span><br><span class="line">        path_length += tree[start][before_node]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> tree[before_node][start] != <span class="number">0</span>:</span><br><span class="line">        path_length += tree[before_node][start]</span><br><span class="line"></span><br><span class="line">    path[start] = path_length</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> adj_v <span class="keyword">in</span> tree[start]:</span><br><span class="line">        dfs(adj_v, start, path_length)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(visited)):</span><br><span class="line">    visited[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">max_path_length = <span class="number">0</span></span><br><span class="line">max_path_node = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx, p <span class="keyword">in</span> <span class="built_in">enumerate</span>(path):</span><br><span class="line">    <span class="keyword">if</span> max_path_length &lt; p:</span><br><span class="line">        max_path_length = p</span><br><span class="line">        max_path_node = idx</span><br><span class="line"></span><br><span class="line">dfs(max_path_node, max_path_node, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="Iteration-stack-으로-변경한-dfs"><a href="#Iteration-stack-으로-변경한-dfs" class="headerlink" title="Iteration(stack)으로 변경한 dfs()"></a>Iteration(stack)으로 변경한 dfs()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">start, path_length</span>):</span></span><br><span class="line">    stack.append((start, start, path_length))</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        curr, before_node, pl = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> visited[curr] <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">            visited[curr] = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> tree[curr][before_node] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[curr][before_node]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> tree[before_node][curr] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[before_node][curr]</span><br><span class="line"></span><br><span class="line">            path[curr] = pl</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> adj_v <span class="keyword">in</span> tree[curr]:</span><br><span class="line">                stack.append((adj_v, curr, pl))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="RecursionError를-해결한-코드-dfs-를-Iteration-stack-으로-구현"><a href="#RecursionError를-해결한-코드-dfs-를-Iteration-stack-으로-구현" class="headerlink" title="RecursionError를 해결한 코드 - dfs()를 Iteration(stack)으로 구현"></a>RecursionError를 해결한 코드 - dfs()를 Iteration(stack)으로 구현</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">tree = [collections.defaultdict(<span class="built_in">int</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">path = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">visited = [<span class="literal">False</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">    p, c, w = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&#x27; &#x27;</span>))</span><br><span class="line">    tree[p][c] = w</span><br><span class="line"></span><br><span class="line">stack = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span>(<span class="params">start, path_length</span>):</span></span><br><span class="line">    stack.append((start, start, path_length))</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        curr, before_node, pl = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> visited[curr] <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">            visited[curr] = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> tree[curr][before_node] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[curr][before_node]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> tree[before_node][curr] != <span class="number">0</span>:</span><br><span class="line">                pl += tree[before_node][curr]</span><br><span class="line"></span><br><span class="line">            path[curr] = pl</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> adj_v <span class="keyword">in</span> tree[curr]:</span><br><span class="line">                stack.append((adj_v, curr, pl))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(visited)):</span><br><span class="line">    visited[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">max_path_length = <span class="number">0</span></span><br><span class="line">max_path_node = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> idx, p <span class="keyword">in</span> <span class="built_in">enumerate</span>(path):</span><br><span class="line">    <span class="keyword">if</span> max_path_length &lt; p:</span><br><span class="line">        max_path_length = p</span><br><span class="line">        max_path_node = idx</span><br><span class="line"></span><br><span class="line">dfs(max_path_node, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 

@@ -23,15 +23,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="처음 접근 트리의 지름 구하는 공식에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.  RecursionError 발생 원인 가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데  조건을 보면 노드의 개수 n(1 ≤ n ≤ 1">
+<meta name="description" content="처음 접근 트리의 지름 구하는 공식에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.  RecursionError 발생 원인 가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데조건을 보면 노드의 개수 n(1 ≤ n ≤ 10,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1967번:트리의 지름(RecursionError 해결)">
 <meta property="og:url" content="https://hyunjungc.dev.github.io/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/index.html">
 <meta property="og:site_name" content="HyunJungC Blog">
-<meta property="og:description" content="처음 접근 트리의 지름 구하는 공식에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.  RecursionError 발생 원인 가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데  조건을 보면 노드의 개수 n(1 ≤ n ≤ 1">
+<meta property="og:description" content="처음 접근 트리의 지름 구하는 공식에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.  RecursionError 발생 원인 가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데조건을 보면 노드의 개수 n(1 ≤ n ≤ 10,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-14T11:44:32.000Z">
-<meta property="article:modified_time" content="2021-08-06T02:25:14.396Z">
+<meta property="article:modified_time" content="2021-08-06T10:19:53.361Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -160,13 +160,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -236,7 +236,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-06 11:25:14" itemprop="dateModified" datetime="2021-08-06T11:25:14+09:00">2021-08-06</time>
+        <time title="Modified: 2021-08-06 19:19:53" itemprop="dateModified" datetime="2021-08-06T19:19:53+09:00">2021-08-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -262,7 +262,7 @@
 <p><a href="">트리의 지름 구하는 공식</a>에 따라 처음은 root인 1 부터 가장 긴 노드 A를 찾고 그 노드 A에서 가장 멀리 있는 노드 B를 찾아, 노드 A와 노드 B 사이의 path 거리를 구했다.</p>
 </blockquote>
 <h1 id="RecursionError-발생-원인"><a href="#RecursionError-발생-원인" class="headerlink" title="RecursionError 발생 원인"></a>RecursionError 발생 원인</h1><blockquote>
-<p>가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데 <br> 조건을 보면 노드의 개수 n(1 ≤ n ≤ 10,000) 이므로 <br> 최악의 경우 recursion이 10000번 일어나게 된다. <br> 파이썬에서 recursion 수는 최대 998번으로 제한하고 있으므로 <strong>maximum recurion에 의해 RecursionError</strong>가 발생한 것이다.</p>
+<p>가장 멀리 있는 노드를 찾을 때 dfs를 recursion으로 구현하였는데<br>조건을 보면 노드의 개수 n(1 ≤ n ≤ 10,000) 이므로<br>최악의 경우 recursion이 10000번 일어나게 된다.<br>파이썬에서 recursion 수는 최대 998번으로 제한하고 있으므로 <strong>maximum recurion에 의해 RecursionError</strong>가 발생한 것이다.</p>
 </blockquote>
 <h1 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h1><blockquote>
 <p>recursion으로 구현한 <strong>dfs()를 Iteration(stack)으로 구현</strong>해주면 된다.</p>

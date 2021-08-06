@@ -31,7 +31,7 @@
 <meta property="og:description" content="Element.getBoundingClientRect() VS Element.closest()두 메서드 중 Element.closest() 선택 Element.getBoundingClientRect()What forces layout &#x2F; reflow 문서를 보면 Element APIs &gt; Getting box metrics &gt; elem.getBo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-01T11:40:09.000Z">
-<meta property="article:modified_time" content="2021-08-05T03:44:31.016Z">
+<meta property="article:modified_time" content="2021-08-06T10:47:04.702Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
 
@@ -160,13 +160,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -236,7 +236,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-05 12:44:31" itemprop="dateModified" datetime="2021-08-05T12:44:31+09:00">2021-08-05</time>
+        <time title="Modified: 2021-08-06 19:47:04" itemprop="dateModified" datetime="2021-08-06T19:47:04+09:00">2021-08-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="Element-getBoundingClientRect-VS-Element-closest"><a href="#Element-getBoundingClientRect-VS-Element-closest" class="headerlink" title="Element.getBoundingClientRect() VS Element.closest()"></a>Element.getBoundingClientRect() VS Element.closest()</h1><p>두 메서드 중 Element.closest() 선택</p>
-<h2 id="Element-getBoundingClientRect"><a href="#Element-getBoundingClientRect" class="headerlink" title="Element.getBoundingClientRect()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">Element.getBoundingClientRect()</a></h2><p><a target="_blank" rel="noopener" href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">What forces layout / reflow</a> 문서를 보면 Element APIs &gt; Getting box metrics &gt; elem.getBoundingClientRect() 가 있음을 볼 수 있다.<br>즉, 이 메서드를 호출할 때마다 브라우저는 요소의 크기와 위치값을 최신 정보로 가져오기 위해 문서의 일부 혹은 전체를 다시 그리는 리플로우(reflow) 현상이 발생한다.<br>이 메서드를 일정을 드래그할 때마다 호출하게 되면 성능에 문제를 줄 수 있다.<br>요소의 크기와 위치값이 캐시될 수 있지만, JADOO 프로젝트의 경우, 일정이 새로 생성, 삭제, 이동되면서 getBoundingClientRect() 메서드로 계산할 요소의 크기와 위치값이 계속 변동되어 새로 계산될 확률이 높으므로 사용하지 않았다.<br>//(<a href="">MutationObserver를 사용해 호출 수를 줄이는 방법도 있긴 하다.</a>)</p>
+<h2 id="Element-getBoundingClientRect"><a href="#Element-getBoundingClientRect" class="headerlink" title="Element.getBoundingClientRect()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">Element.getBoundingClientRect()</a></h2><p><a target="_blank" rel="noopener" href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">What forces layout / reflow</a> 문서를 보면 Element APIs &gt; Getting box metrics &gt; elem.getBoundingClientRect() 가 있음을 볼 수 있다.<br>즉, 이 메서드를 호출할 때마다 브라우저는 요소의 크기와 위치값을 최신 정보로 가져오기 위해 문서의 일부 혹은 전체를 다시 그리는 리플로우(reflow) 현상이 발생한다.<br><strong>이 메서드를 일정을 드래그할 때마다 호출하게 되면 성능에 문제를 줄 수 있다.</strong><br>요소의 크기와 위치값이 캐시될 수 있지만, JADOO 프로젝트의 경우, 일정이 새로 생성, 삭제, 이동되면서 getBoundingClientRect() 메서드로 계산할 요소의 크기와 위치값이 계속 변동되어 새로 계산될 확률이 높으므로 사용하지 않았다.<br>//(<a href="">MutationObserver를 사용해 호출 수를 줄이는 방법도 있긴 하다.</a>)</p>
 <h2 id="Element-closest"><a href="#Element-closest" class="headerlink" title="Element.closest()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">Element.closest()</a></h2><p>레이아웃 계산이 필요없이 HTML의 부모자식관계를 이용하는 메서드를 사용했다.<br>해당 요소부터 시작해서 document까지 비교하게 되는데 조금이라도 덜 비교하기 위해 아래와 같은 커스텀 함수를 만들어 사용했다.  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// closest 커스텀 함수</span></span><br><span class="line"><span class="keyword">const</span> closest = <span class="function">(<span class="params">$startElem, targetClass, endClass</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> elem = $startElem;</span><br><span class="line">  <span class="keyword">while</span> (!elem.classList.contains(targetClass)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (elem.classList.contains(endClass)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    elem = elem.parentNode;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> elem;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
