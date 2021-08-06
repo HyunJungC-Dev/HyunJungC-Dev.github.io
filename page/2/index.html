@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -190,6 +190,287 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/28/Express-Framework-%EA%B8%B0%EB%B3%B8-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-server-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/28/Express-Framework-%EA%B8%B0%EB%B3%B8-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-server-js/" class="post-title-link" itemprop="url">Express Framework 기본 이해하기 - server.js</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-28 18:49:31 / Modified: 20:07:03" itemprop="dateCreated datePublished" datetime="2021-06-28T18:49:31+09:00">2021-06-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-JavaScript/" itemprop="url" rel="index"><span itemprop="name">TIL/JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="server-js-코드"><a href="#server-js-코드" class="headerlink" title="server.js 코드"></a>server.js 코드</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> PORT = <span class="number">9900</span>;</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>));</span><br><span class="line"></span><br><span class="line">app.listen(PORT, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Server is listening on http://localhost:<span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">&#x27;JavaScript&#x27;</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">&#x27;CSS&#x27;</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">&#x27;HTML&#x27;</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. FetchTodos</span></span><br><span class="line">app.get(<span class="string">&#x27;/todos&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.send(todos);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Add todo</span></span><br><span class="line">app.post(<span class="string">&#x27;/todos&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  todos = [req.body, ...todos];</span><br><span class="line">  res.send(todos);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> PORT = <span class="number">9900</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The app.use(express.static()) adds a middleware for serving static files to your Express app.</span></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="middleware-미들웨어"><a href="#middleware-미들웨어" class="headerlink" title="middleware(미들웨어)"></a>middleware(미들웨어)</h3><p>Client로부터 request(요청)이 오고<br>그 request에 대한 response(응답)을 보내는<br>그 사이에 실행되는 함수이다.<br>(사진첨부 - 예정)</p>
+<h3 id="app-use"><a href="#app-use" class="headerlink" title="app.use()"></a>app.use()</h3><p>app.use()는 middleware(미들웨어)를 application(app object instance)에 binding한다.   </p>
+<p>app.use() 안의 함수들은<br>모두 middleware(미들웨어)이며<br>request(요청)가 올때마다 이 middleware가 실행된 후,<br>Client에 response(응답)한다.</p>
+<h3 id="express-static-root-options"><a href="#express-static-root-options" class="headerlink" title="express.static(root, [options])"></a>express.static(root, [options])</h3><p>express.static()은 Express의 유일한 기본 제공 middleware(미들웨어) 함수이다.<br>이 함수는 serve-static을 기반으로 하며, Express application의 정적 자산을 제공한다.    </p>
+<p>root 인수는 정적 자산의 제공을 시작하는 위치인 root directory를 설정한다.</p>
+<h3 id="app-use-express-static-‘public’"><a href="#app-use-express-static-‘public’" class="headerlink" title="app.use(express.static(‘public’));"></a>app.use(express.static(‘public’));</h3><p>app(=Server)에 request(요청)이 올 때마다<br>express.static(‘public’)을 실행하여 root directory를 public으로 설정한다.</p>
+<h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.json()); <span class="comment">// for parsing application/json</span></span><br></pre></td></tr></table></figure>
+<p>request(요청)에 넘어오는 payload(페이로드)를 json 형식으로 pharsing(파싱)한다.</p>
+<h2 id="-3"><a href="#-3" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The app.listen() function is used to bind and listen the connections on the specified host and port.</span></span><br><span class="line">app.listen(PORT, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Server is listening on http://localhost:<span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="app-listen"><a href="#app-listen" class="headerlink" title="app.listen()"></a>app.listen()</h3><p>app.listen()은 지정된 host 및 port의 connection을 bind(연결)하고 listen(수신 대기)한다.</p>
+<h2 id="-4"><a href="#-4" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Stored data on a server</span></span><br><span class="line"><span class="keyword">let</span> todos = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">content</span>: <span class="string">&#x27;JavaScript&#x27;</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">content</span>: <span class="string">&#x27;CSS&#x27;</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">content</span>: <span class="string">&#x27;HTML&#x27;</span>, <span class="attr">completed</span>: <span class="literal">false</span> &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>서버에 저장된 데이터를 의미한다.</p>
+<h2 id="1-FetchTodos"><a href="#1-FetchTodos" class="headerlink" title="-1. FetchTodos"></a>-1. FetchTodos</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The app.get() function define a route handler for GET requests to a given URL.</span></span><br><span class="line">app.get(<span class="string">&#x27;/todos&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.send(todos);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="app-get-path-handler"><a href="#app-get-path-handler" class="headerlink" title="app.get(path, handler)"></a>app.get(path, handler)</h3><p>app.get(path, handler)는 주어진 URL로부터 GET request가 올 때 실행될 route handler를 정의한다.</p>
+<h3 id="app-get-‘-todos’-req-res-gt-res-send-todos"><a href="#app-get-‘-todos’-req-res-gt-res-send-todos" class="headerlink" title="app.get(‘/todos’, (req, res) =&gt; { res.send(todos); });"></a>app.get(‘/todos’, (req, res) =&gt; { res.send(todos); });</h3><p>/todos에서 GET requset가 올 경우, response(res)로 todos 데이터를 보낸다.    </p>
+<p>send() 시,<br>send framework가 타입을 확인해서 문자열이면 그대로 body에 담아서 보내고,<br>그 외의 타입이라면 stringify()로 문자열로 바꿔서 보낸다.  </p>
+<h2 id="2-Add-Todo"><a href="#2-Add-Todo" class="headerlink" title="-2. Add Todo"></a>-2. Add Todo</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">&#x27;/todos&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  todos = [req.body, ...todos];</span><br><span class="line">  res.send(todos);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>/todos에서 POST request가 올 경우, response(res)로 request(req).body를 payload(페이로드)로 보낸다.   </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/22/IE%EC%97%90%EC%84%9C-forEach-%EC%98%A4%EB%A5%98%EC%9B%90%EC%9D%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/22/IE%EC%97%90%EC%84%9C-forEach-%EC%98%A4%EB%A5%98%EC%9B%90%EC%9D%B8/" class="post-title-link" itemprop="url">IE에서 forEach 오류원인</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-22 10:10:40" itemprop="dateCreated datePublished" datetime="2021-06-22T10:10:40+09:00">2021-06-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-01 20:22:42" itemprop="dateModified" datetime="2021-08-01T20:22:42+09:00">2021-08-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL-JavaScript/" itemprop="url" rel="index"><span itemprop="name">TIL/JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="오류-원인"><a href="#오류-원인" class="headerlink" title="오류 원인"></a>오류 원인</h1><p>IE 브라우저에서는 document.querySelectorAll()이 반환하는 NodeList 객체에 대해서는 forEach 메서드를 지원하지 않는다.</p>
+<h2 id="오류-해결"><a href="#오류-해결" class="headerlink" title="오류 해결"></a>오류 해결</h2><p>[…document.querySelectorAll()].forEach() 와 같이 NodeList 객체를 배열로 바꿔 배열의 forEach 메서드를 사용해야한다.</p>
+<h2 id="배열로-변환해야하는-더-중요한ㄴ-이유"><a href="#배열로-변환해야하는-더-중요한ㄴ-이유" class="headerlink" title="배열로 변환해야하는 더 중요한ㄴ 이유"></a>배열로 변환해야하는 더 중요한ㄴ 이유</h2><p><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/08/01/HTMLCollection-VS-NodeList/">HTMLCollection 객체와 NodeList 객체는 모두 배열로 변환하여 사용하는 것을 권장한다.</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/22/%EB%93%9C%EB%9E%98%EA%B7%B8%ED%96%88%EC%9D%84-%EB%95%8C-mouseup-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B0%80-%EC%9E%91%EB%8F%99%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EC%9D%B4%EC%9C%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/22/%EB%93%9C%EB%9E%98%EA%B7%B8%ED%96%88%EC%9D%84-%EB%95%8C-mouseup-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B0%80-%EC%9E%91%EB%8F%99%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EC%9D%B4%EC%9C%A0/" class="post-title-link" itemprop="url">드래그했을 때 mouseup 이벤트가 작동하지 않는 이유</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-22 00:56:39" itemprop="dateCreated datePublished" datetime="2021-06-22T00:56:39+09:00">2021-06-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-01 20:35:35" itemprop="dateModified" datetime="2021-08-01T20:35:35+09:00">2021-08-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Project-JaDooCalendar/" itemprop="url" rel="index"><span itemprop="name">Project/JaDooCalendar</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="드래그했을-때-mouseup-이벤트가-작동하지-않는-이유"><a href="#드래그했을-때-mouseup-이벤트가-작동하지-않는-이유" class="headerlink" title="드래그했을 때 mouseup 이벤트가 작동하지 않는 이유"></a>드래그했을 때 mouseup 이벤트가 작동하지 않는 이유</h1><p>요소를 잡아 끌고 놓았을 때는 해당 요소의 mouseup 이벤트가 발생하지 않기 때문이다.<br>즉, <strong>잡아 끌 해당 요소에 mouseup 이벤트를 걸었기 때문</strong>이다.   </p>
+<h2 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h2><p><strong>mouseup 이벤트를 doucment에 걸어주는 것</strong>으로 해결할 수 있다.</p>
+<h2 id="잡아-끌-해당-요소에-mouseup-이벤트를-걸면-안되는-이유"><a href="#잡아-끌-해당-요소에-mouseup-이벤트를-걸면-안되는-이유" class="headerlink" title="잡아 끌 해당 요소에 mouseup 이벤트를 걸면 안되는 이유"></a>잡아 끌 해당 요소에 mouseup 이벤트를 걸면 안되는 이유</h2><h3 id="마우스-왼쪽-클릭-시"><a href="#마우스-왼쪽-클릭-시" class="headerlink" title="마우스 왼쪽 클릭 시"></a>마우스 왼쪽 클릭 시</h3><ol>
+<li>mousedown</li>
+<li>mouseup</li>
+<li>click 이벤트 순으로 발생한다.</li>
+</ol>
+<h3 id="마우스-오른쪽-클릭-시"><a href="#마우스-오른쪽-클릭-시" class="headerlink" title="마우스 오른쪽 클릭 시"></a>마우스 오른쪽 클릭 시</h3><ol>
+<li>mousedown</li>
+<li>mouseup</li>
+<li>contextmenu 이벤트 순으로 발생한다.</li>
+</ol>
+<p>위와 같이 요소 위에서 클릭이 이루어지는 경우엔 마우스 포인터가 움직이지 않으므로 mouseup이벤트를 해당 요소에 걸어도 문제가 없다.  </p>
+<p>하지만 마우스 포인터가 요소를 벗어난 상태에서는 해당 요소에 mouseup 이벤트가 발생할 수 없다. <strong><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_even">mouseup이벤트는 그 순간 마우스 포인터가 있는 곳에서 발생</a>하기 때문</strong>.  </p>
+<h3 id="마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-false면"><a href="#마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-false면" class="headerlink" title="마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable false면"></a>마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable false면</h3><ol>
+<li>mousedown<br>만 일어난다.<br>이미 마우스 포인터가 요소를 벗어난 상태이므로 mouseup과 click은 발생하지 못한다.</li>
+</ol>
+<h3 id="마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-true면"><a href="#마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-true면" class="headerlink" title="마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable true면"></a>마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable true면</h3><ol>
+<li>mousedown</li>
+<li>dragend 이벤트 순으로 발생한다.<br>이미 마우스 포인터가 요소를 벗어난 상태이므로 mouseup과 click은 발생하지 못한다.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -230,7 +511,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-22 00:57:30" itemprop="dateModified" datetime="2021-06-22T00:57:30+09:00">2021-06-22</time>
+        <time title="Modified: 2021-08-06 11:27:33" itemprop="dateModified" datetime="2021-08-06T11:27:33+09:00">2021-08-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,7 +533,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="HTML-Drag-and-Drop"><a href="#HTML-Drag-and-Drop" class="headerlink" title="HTML Drag and Drop"></a>HTML Drag and Drop</h1><h1 id="Mouse-이벤트"><a href="#Mouse-이벤트" class="headerlink" title="Mouse 이벤트"></a>Mouse 이벤트</h1>
+          <h1 id="HTML-Drag-and-Drop"><a href="#HTML-Drag-and-Drop" class="headerlink" title="HTML Drag and Drop"></a>HTML Drag and Drop</h1><h1 id="Mouse-이벤트"><a href="#Mouse-이벤트" class="headerlink" title="Mouse 이벤트"></a>Mouse 이벤트</h1><h1 id="Pointer-이벤트"><a href="#Pointer-이벤트" class="headerlink" title="Pointer 이벤트"></a>Pointer 이벤트</h1>
       
     </div>
 
@@ -594,17 +875,23 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-05-28 01:10:34 / Modified: 01:55:05" itemprop="dateCreated datePublished" datetime="2021-05-28T01:10:34+09:00">2021-05-28</time>
+      <time title="Created: 2021-05-28 01:10:34" itemprop="dateCreated datePublished" datetime="2021-05-28T01:10:34+09:00">2021-05-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-06 11:25:33" itemprop="dateModified" datetime="2021-08-06T11:25:33+09:00">2021-08-06</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
+          <a href="/categories/Algorithm-BOJ/" itemprop="url" rel="index"><span itemprop="name">Algorithm/BOJ</span></a>
         </span>
     </span>
 
@@ -765,17 +1052,23 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-04-14 20:44:32 / Modified: 21:15:53" itemprop="dateCreated datePublished" datetime="2021-04-14T20:44:32+09:00">2021-04-14</time>
+      <time title="Created: 2021-04-14 20:44:32" itemprop="dateCreated datePublished" datetime="2021-04-14T20:44:32+09:00">2021-04-14</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-06 11:25:14" itemprop="dateModified" datetime="2021-08-06T11:25:14+09:00">2021-08-06</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
+          <a href="/categories/Algorithm-BOJ/" itemprop="url" rel="index"><span itemprop="name">Algorithm/BOJ</span></a>
         </span>
     </span>
 
@@ -820,262 +1113,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/14/%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-%EA%B5%AC%ED%95%98%EA%B8%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/14/%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-%EA%B5%AC%ED%95%98%EA%B8%B0/" class="post-title-link" itemprop="url">트리의 지름 구하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-14 10:18:13" itemprop="dateCreated datePublished" datetime="2021-04-14T10:18:13+09:00">2021-04-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-08 19:47:11" itemprop="dateModified" datetime="2021-06-08T19:47:11+09:00">2021-06-08</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-Python/" itemprop="url" rel="index"><span itemprop="name">TIL/Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h1><p><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1967">백준 1967번 트리의 지름</a>을 풀 때, 아무리 고민해도 시간 초과를 해결하지 못해 조금 검색해보니 트리의 지름을 구하는 공식이 있었기에 정리해둔다.</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/04/14/1967%EB%B2%88-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%A7%80%EB%A6%84-RecursionError-%ED%95%B4%EA%B2%B0/">해당 공식을 사용하여 푼 풀이</a></li>
-</ul>
-<h1 id="트리의-지름-구하는-공식"><a href="#트리의-지름-구하는-공식" class="headerlink" title="트리의 지름 구하는 공식"></a>트리의 지름 구하는 공식</h1><blockquote>
-<p>임의의 노드 A에서 가장 거리가 먼 노드 B를 구하고,<br>그 B에서 가장 거리가 먼 노드 C를 구하게 되었을때,<br><strong>B와 C사이의 거리</strong>가 <strong>트리의 지름</strong>이 된다.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/12/2156%EB%B2%88-%ED%8F%AC%EB%8F%84%EC%A3%BC%EC%8B%9C%EC%8B%9D-%EC%83%9D%EA%B0%81%EB%AA%BB%ED%96%88%EB%8D%98-%EA%B2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/12/2156%EB%B2%88-%ED%8F%AC%EB%8F%84%EC%A3%BC%EC%8B%9C%EC%8B%9D-%EC%83%9D%EA%B0%81%EB%AA%BB%ED%96%88%EB%8D%98-%EA%B2%83/" class="post-title-link" itemprop="url">2156번:포도주시식(생각못했던 것)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-12 18:09:35 / Modified: 20:34:07" itemprop="dateCreated datePublished" datetime="2021-04-12T18:09:35+09:00">2021-04-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="생각못했던-것1"><a href="#생각못했던-것1" class="headerlink" title="생각못했던 것1"></a>생각못했던 것1</h1><p>계단 오르기와 동일한 문제라고 생각했는데 차이가 있었다.</p>
-<blockquote>
-<p>계단 오르기는 마지막 계단을 반드시 밟아야한다는 조건이 있었지만<br>포도주시식은 마지막 잔을 반드시 마셔야한다는 조건이 없었다.<br>즉, 포도주 시식의 경우, 마지막 잔을 안 마시는게 더 포도주를 많이 마실 수 있다면 그 경우를 찾아줘야한다.</p>
-</blockquote>
-<p>가령 문제의 예시를 보면, 6잔의 포도주에<br>6 10 13 9 8 1 이 있을 때<br>기존의 계단오르기 처럼 하면<br>6 <strong>10</strong> <strong>13</strong> 9 <strong>8</strong> <strong>1</strong> 을 마셔 32를 최대라고 하는<br><strong>6</strong> <strong>10</strong> 13 <strong>9</strong> <strong>8</strong> 1 이 경우가 33으로 최대이다.</p>
-<br>
-
-<h1 id="잘못-짰던-코드-계단-오르기와-동일한-코드"><a href="#잘못-짰던-코드-계단-오르기와-동일한-코드" class="headerlink" title="잘못 짰던 코드 - 계단 오르기와 동일한 코드"></a>잘못 짰던 코드 - 계단 오르기와 동일한 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">wines = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">    wines[i] = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">dp = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">&lt;br&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># dp[i] = i번째를 반드시 마신다는 가정하에, i번째까지의 최대 와인 양</span></span><br><span class="line">dp[<span class="number">1</span>] = wines[<span class="number">1</span>]</span><br><span class="line">dp[<span class="number">2</span>] = wines[<span class="number">1</span>]+wines[<span class="number">2</span>]</span><br><span class="line">dp[<span class="number">3</span>] = <span class="built_in">max</span>(wines[<span class="number">1</span>]+wines[<span class="number">3</span>], wines[<span class="number">2</span>]+wines[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">    dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">2</span>]+wines[i], dp[i-<span class="number">3</span>]+wines[i-<span class="number">1</span>]+wines[i])</span><br><span class="line"><span class="built_in">print</span>(dp[n])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="위-원인을-반영한-코드-그래도-틀린-코드"><a href="#위-원인을-반영한-코드-그래도-틀린-코드" class="headerlink" title="위 원인을 반영한 코드 - 그래도 틀린 코드"></a>위 원인을 반영한 코드 - 그래도 틀린 코드</h1><blockquote>
-<p>dp[i] = max(dp[i-2]+wines[i],dp[i-3]+wines[i-1] + wines[i], dp[i-1])에서<br>dp[i-1]을 추가했다.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">wines = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">    wines[i] = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">dp = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="comment"># dp[i] = i번째를 마시든 안 마시든, i번째까지의 최대 와인 양</span></span><br><span class="line">dp[<span class="number">1</span>] = wines[<span class="number">1</span>]</span><br><span class="line">dp[<span class="number">2</span>] = wines[<span class="number">1</span>]+wines[<span class="number">2</span>]</span><br><span class="line">dp[<span class="number">3</span>] = <span class="built_in">max</span>(wines[<span class="number">1</span>]+wines[<span class="number">3</span>], wines[<span class="number">2</span>]+wines[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">    dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">2</span>]+wines[i],</span><br><span class="line">                dp[i-<span class="number">3</span>]+wines[i-<span class="number">1</span>] + wines[i], dp[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(dp[n])</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 id="생각못했던-것2"><a href="#생각못했던-것2" class="headerlink" title="생각못했던 것2"></a>생각못했던 것2</h1><blockquote>
-<p>dp[3]도 dp[2]와 비교해서 더 큰 값을 넣어줘야 했다.  </p>
-</blockquote>
-<br>
-
-<h1 id="최총-맞은-코드"><a href="#최총-맞은-코드" class="headerlink" title="최총 맞은 코드"></a>최총 맞은 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">wines = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">    wines[i] = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">dp = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"><span class="comment"># dp[i] = i번째를 마시든 안 마시든, i번째까지의 최대 와인 양</span></span><br><span class="line">dp[<span class="number">1</span>] = wines[<span class="number">1</span>]</span><br><span class="line">dp[<span class="number">2</span>] = wines[<span class="number">1</span>]+wines[<span class="number">2</span>]</span><br><span class="line">dp[<span class="number">3</span>] = <span class="built_in">max</span>(wines[<span class="number">1</span>]+wines[<span class="number">3</span>], wines[<span class="number">2</span>]+wines[<span class="number">3</span>], dp[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">    dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">2</span>]+wines[i],</span><br><span class="line">                dp[i-<span class="number">3</span>]+wines[i-<span class="number">1</span>] + wines[i])</span><br><span class="line">    dp[i] = <span class="built_in">max</span>(dp[i], dp[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(dp[n])</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/04/12/2579%EB%B2%88-%EA%B3%84%EB%8B%A8-%EC%98%A4%EB%A5%B4%EA%B8%B0-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%8B%9C%EA%B0%84-%EC%A4%84%EC%9D%B4%EA%B8%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/12/2579%EB%B2%88-%EA%B3%84%EB%8B%A8-%EC%98%A4%EB%A5%B4%EA%B8%B0-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%8B%9C%EA%B0%84-%EC%A4%84%EC%9D%B4%EA%B8%B0/" class="post-title-link" itemprop="url">2579번:계단 오르기(메모리, 시간 줄이기)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-12 17:58:10 / Modified: 17:58:20" itemprop="dateCreated datePublished" datetime="2021-04-12T17:58:10+09:00">2021-04-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/BOJ/" itemprop="url" rel="index"><span itemprop="name">BOJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
