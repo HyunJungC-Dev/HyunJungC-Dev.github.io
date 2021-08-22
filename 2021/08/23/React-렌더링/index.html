@@ -23,28 +23,39 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"hyunjungc.dev.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="HyunJungC Blog">
-<meta property="og:url" content="https://hyunjungc.dev.github.io/index.html">
+<meta name="description" content="하드 코딩된 HTML 마크업1234567891011&lt;!-- Actual DOM Node : Container --&gt;&lt;div class&#x3D;&quot;app&quot; lang&#x3D;&quot;en&quot;&gt;      &lt;h1 class&#x3D;&quot;app__headline&quot;&gt;        React        &lt;abbr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 렌더링">
+<meta property="og:url" content="https://hyunjungc.dev.github.io/2021/08/23/React-%EB%A0%8C%EB%8D%94%EB%A7%81/index.html">
 <meta property="og:site_name" content="HyunJungC Blog">
+<meta property="og:description" content="하드 코딩된 HTML 마크업1234567891011&lt;!-- Actual DOM Node : Container --&gt;&lt;div class&#x3D;&quot;app&quot; lang&#x3D;&quot;en&quot;&gt;      &lt;h1 class&#x3D;&quot;app__headline&quot;&gt;        React        &lt;abbr">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/df9bc6c3-fbf7-445c-b877-b24b14c7b4f7/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/096f170f-80b6-446a-acf1-feac4cb1aa74/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/43179a1a-2608-446c-9c63-07633da8ba2b/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/39fbe64d-16e9-4ca1-bb57-d71a37621766/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/61fd3926-6f9d-4c78-b86b-b8abd8ed62bb/Untitled.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/63124b6c-d10f-43e5-add1-97a77ba2bc27/Untitled.png">
+<meta property="article:published_time" content="2021-08-22T15:28:51.000Z">
+<meta property="article:modified_time" content="2021-08-22T15:35:47.405Z">
 <meta property="article:author" content="Hyun Jung">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/df9bc6c3-fbf7-445c-b877-b24b14c7b4f7/Untitled.png">
 
 
-<link rel="canonical" href="https://hyunjungc.dev.github.io/">
+<link rel="canonical" href="https://hyunjungc.dev.github.io/2021/08/23/React-%EB%A0%8C%EB%8D%94%EB%A7%81/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
-<title>HyunJungC Blog</title>
+<title>React 렌더링 | HyunJungC Blog</title>
   
 
 
@@ -130,7 +141,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -143,6 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%98%EB%93%9C-%EC%BD%94%EB%94%A9%EB%90%9C-HTML-%EB%A7%88%ED%81%AC%EC%97%85"><span class="nav-number">1.</span> <span class="nav-text">하드 코딩된 HTML 마크업</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API-Actual-DOM-Tree-%EB%A1%9C-%EB%B3%80%EA%B2%BD"><span class="nav-number">2.</span> <span class="nav-text">DOM API - Actual DOM Tree 로 변경</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-API-Virtual-DOM-Tree-%EB%A1%9C-%EB%B3%80%EA%B2%BD"><span class="nav-number">3.</span> <span class="nav-text">React API - Virtual DOM Tree 로 변경</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN-React-Library-%E2%86%92-React-createElement-React-forwardRef-%EB%93%B1%E2%80%A6"><span class="nav-number">3.1.</span> <span class="nav-text">CDN : React Library → React.createElement(), React.forwardRef() 등…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-create-Element"><span class="nav-number">3.2.</span> <span class="nav-text">React.create.Element()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN-ReactDOM-Library-%E2%86%92-ReactDOM-render"><span class="nav-number">3.3.</span> <span class="nav-text">CDN: ReactDOM Library → ReactDOM.render()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactDOM-render"><span class="nav-number">3.4.</span> <span class="nav-text">ReactDOM.render()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Babel-Standlone"><span class="nav-number">3.5.</span> <span class="nav-text">Babel Standlone.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN-ReactDOMServer-Library-%E2%86%92-ReactDOMServer-renderToString-renderToStaticMarkup-%EB%93%B1%E2%80%A6"><span class="nav-number">3.6.</span> <span class="nav-text">CDN: ReactDOMServer Library → ReactDOMServer.renderToString(), renderToStaticMarkup() 등…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactDOMServer-renderToStaticMarkup"><span class="nav-number">3.7.</span> <span class="nav-text">ReactDOMServer.renderToStaticMarkup()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX"><span class="nav-number">4.</span> <span class="nav-text">JSX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-%EB%A1%9C-%EB%B3%80%EA%B2%BD"><span class="nav-number">5.</span> <span class="nav-text">JSX 로 변경</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel%EC%9D%B4-JSX%EC%9D%B8-%EC%9C%84-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9D%B4-React-API%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%B4%EC%A4%80%EB%8B%A4"><span class="nav-number">6.</span> <span class="nav-text">babel이 JSX인 위 코드를 아래와 같이 React API로 변경해준다.</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -189,16 +201,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/23/React-%EB%A0%8C%EB%8D%94%EB%A7%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -211,9 +224,9 @@
       <meta itemprop="name" content="HyunJungC Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/23/React-%EB%A0%8C%EB%8D%94%EB%A7%81/" class="post-title-link" itemprop="url">React 렌더링</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          React 렌더링
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -237,7 +250,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="하드-코딩된-HTML-마크업"><a href="#하드-코딩된-HTML-마크업" class="headerlink" title="하드 코딩된 HTML 마크업"></a>하드 코딩된 HTML 마크업</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Actual DOM Node : Container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;app&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;app__headline&quot;</span>&gt;</span></span><br><span class="line">        React</span><br><span class="line">        <span class="tag">&lt;<span class="name">abbr</span> <span class="attr">title</span>=<span class="string">&quot;Application Programming Interface&quot;</span>&gt;</span>API<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;app__list list--api&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>React<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>ReactDOM<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="하드-코딩된-HTML-마크업"><a href="#하드-코딩된-HTML-마크업" class="headerlink" title="하드 코딩된 HTML 마크업"></a>하드 코딩된 HTML 마크업</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Actual DOM Node : Container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;app&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;app__headline&quot;</span>&gt;</span></span><br><span class="line">        React</span><br><span class="line">        <span class="tag">&lt;<span class="name">abbr</span> <span class="attr">title</span>=<span class="string">&quot;Application Programming Interface&quot;</span>&gt;</span>API<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;app__list list--api&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>React<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>ReactDOM<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="DOM-API-Actual-DOM-Tree-로-변경"><a href="#DOM-API-Actual-DOM-Tree-로-변경" class="headerlink" title="DOM API - Actual DOM Tree 로 변경"></a>DOM API - Actual DOM Tree 로 변경</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Programming DOM Script : Actual DOM Tree--&gt;</span><br><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> rootNode = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>); </span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> abbrNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;abbr&#x27;</span>);</span><br><span class="line">    abbrNode.setAttribute(<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;Application Programming Interface&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">		<span class="keyword">const</span> abbrContent = <span class="built_in">document</span>.createTextNode(<span class="string">&#x27;API&#x27;</span>);</span><br><span class="line">    abbrNode.appendChild(abbrContent);</span><br><span class="line">    </span><br><span class="line">		<span class="keyword">const</span> headingNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;h1&#x27;</span>);</span><br><span class="line">    headingNode.insertAdjacentText(<span class="string">&#x27;beforeend&#x27;</span>, <span class="string">&#x27;React&#x27;</span>);</span><br><span class="line">    headingNode.insertAdjacentText(<span class="string">&#x27;beforeend&#x27;</span>, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">    headingNode.insertAdjacentElement(<span class="string">&#x27;beforeend&#x27;</span>, abbrNode);</span><br><span class="line">    </span><br><span class="line">		<span class="keyword">const</span> appNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    appNode.classList.add(<span class="string">&#x27;app&#x27;</span>);</span><br><span class="line">    appNode.setAttribute(<span class="string">&#x27;lang&#x27;</span>, <span class="string">&#x27;en&#x27;</span>);</span><br><span class="line">    appNode.insertAdjacentElement(<span class="string">&#x27;beforeend&#x27;</span>, headingNode);</span><br><span class="line">    </span><br><span class="line">		<span class="built_in">console</span>.dir(appNode);</span><br><span class="line"></span><br><span class="line">    rootNode.appendChild(appNode);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
@@ -384,7 +397,6 @@
 
 <p>JSX : React VDOM Tree -&gt; render -&gt; Actual DOM Mount</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props <span class="comment">/* &#123; frameworkName, style &#125; */</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div classname=<span class="string">&#x27;app&#x27;</span> lang=<span class="string">&#x27;en&#x27;</span> style=&#123;props.style&#125;&gt;</span><br><span class="line">      &lt;h1 className=<span class="string">&#x27;app__headline&#x27;</span>&gt;</span><br><span class="line">        React &lt;abbr title=<span class="string">&#x27;Application Programming Interface&#x27;</span>&gt;API&lt;/abbr&gt;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;ul className=<span class="string">&#x27;app__list list--api&#x27;</span>&gt;</span><br><span class="line">        &lt;li&gt;React&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;ReactDOM&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// React VDOM Tree → render → Actual DOM Mount</span></span><br><span class="line">render(</span><br><span class="line">  <span class="comment">// React.createElement(App, &#123; frameworkName: &#x27;React&#x27;, count: 12 &#125;),</span></span><br><span class="line">  &lt;App</span><br><span class="line">    frameworkName=<span class="string">&#x27;React&#x27;</span></span><br><span class="line">    style=&#123;&#123; <span class="attr">border</span>: <span class="string">&#x27;6px solid currentColor&#x27;</span>, <span class="attr">padding</span>: <span class="string">&#x27;2rem 4rem&#x27;</span> &#125;&#125;</span><br><span class="line">  /&gt;,</span><br><span class="line">  rootNode</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
@@ -392,8 +404,18 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/22/Weekly-Chanllenge-21%EB%85%84-08%EC%9B%94-3%EC%A3%BC%EC%B0%A8/" rel="prev" title="Weekly Chanllenge 21년 08월 3주차">
+                  <i class="fa fa-chevron-left"></i> Weekly Chanllenge 21년 08월 3주차
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -401,712 +423,7 @@
 
 
 
-    
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/22/Weekly-Chanllenge-21%EB%85%84-08%EC%9B%94-3%EC%A3%BC%EC%B0%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/22/Weekly-Chanllenge-21%EB%85%84-08%EC%9B%94-3%EC%A3%BC%EC%B0%A8/" class="post-title-link" itemprop="url">Weekly Chanllenge 21년 08월 3주차</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-22 23:56:11" itemprop="dateCreated datePublished" datetime="2021-08-22T23:56:11+09:00">2021-08-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-23 00:26:48" itemprop="dateModified" datetime="2021-08-23T00:26:48+09:00">2021-08-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm-Programmers-WeeklyChanllenge/" itemprop="url" rel="index"><span itemprop="name">Algorithm/Programmers/WeeklyChanllenge</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h2><p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/84021">프로그래머스 위클리 테스트 21년 8월 3주차</a></p>
-<h2 id="블록-추출"><a href="#블록-추출" class="headerlink" title="블록 추출"></a>블록 추출</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> blockBundles = findBundles(table, <span class="number">1</span>)</span><br><span class="line">    .map(<span class="function"><span class="params">bundle</span> =&gt;</span> getRotatedBunbles(bundle))</span><br><span class="line">    .map(<span class="function"><span class="params">rotatedBundle</span> =&gt;</span> rotatedBundle.map(<span class="function"><span class="params">bundle</span> =&gt;</span> mediateBundle(bundle)))</span><br><span class="line">    .map(<span class="function"><span class="params">rotatedBundle</span> =&gt;</span> rotatedBundle.map(<span class="function"><span class="params">bundle</span> =&gt;</span> bundle.flat().join(<span class="string">&#x27;&#x27;</span>)));</span><br></pre></td></tr></table></figure>
-
-<h2 id="전체-정답코드"><a href="#전체-정답코드" class="headerlink" title="전체 정답코드"></a>전체 정답코드</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dx = [<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> dy = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getBundle = <span class="function">(<span class="params">arr, x, y, value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> bundle = [];</span><br><span class="line">  <span class="keyword">const</span> _x = x;</span><br><span class="line">  <span class="keyword">const</span> _y = y;</span><br><span class="line">  <span class="keyword">const</span> recur = <span class="function">(<span class="params">x, y, value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[x][y] !== value) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    bundle.push([x - _x, y - _y]);</span><br><span class="line"></span><br><span class="line">    arr[x][y] = value ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> nx = x + dx[i];</span><br><span class="line">      <span class="keyword">const</span> ny = y + dy[i];</span><br><span class="line">      <span class="keyword">if</span> (</span><br><span class="line">        nx &gt;= <span class="number">0</span> &amp;&amp;</span><br><span class="line">        nx &lt; arr.length &amp;&amp;</span><br><span class="line">        ny &gt;= <span class="number">0</span> &amp;&amp;</span><br><span class="line">        ny &lt; arr.length &amp;&amp;</span><br><span class="line">        arr[nx][ny] === value</span><br><span class="line">      ) &#123;</span><br><span class="line">        recur(nx, ny, value);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  recur(x, y, value);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> bundle.sort();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> findBundles = <span class="function">(<span class="params">arr, value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> bundles = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[i][j] === value) &#123;</span><br><span class="line">        bundles.push(getBundle(arr, i, j, value));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bundles;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getRotatedBunbles = <span class="function"><span class="params">bundle</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> bundles = [bundle];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    bundles.push(</span><br><span class="line">      bundles[bundles.length - <span class="number">1</span>].map(<span class="function">(<span class="params">[x, y]</span>) =&gt;</span> [-y || <span class="number">0</span>, x]).sort()</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bundles;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mediateBundle = <span class="function"><span class="params">bundle</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [row, col] = bundle.reduce(</span><br><span class="line">    (acc, cur) =&gt; [<span class="built_in">Math</span>.min(acc[<span class="number">0</span>], cur[<span class="number">0</span>]), <span class="built_in">Math</span>.min(acc[<span class="number">1</span>], cur[<span class="number">1</span>])],</span><br><span class="line">    [<span class="built_in">Number</span>.MAX_SAFE_INTEGER, <span class="built_in">Number</span>.MAX_SAFE_INTEGER]</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> bundle</span><br><span class="line">    .map(<span class="function">(<span class="params">[r, c]</span>) =&gt;</span> [row &lt; <span class="number">0</span> ? r - row : r, col &lt; <span class="number">0</span> ? c - col : c])</span><br><span class="line">    .sort();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">solution</span>(<span class="params">game_board, table</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> blockBundles = findBundles(table, <span class="number">1</span>)</span><br><span class="line">    .map(<span class="function"><span class="params">bundle</span> =&gt;</span> getRotatedBunbles(bundle))</span><br><span class="line">    .map(<span class="function"><span class="params">rotatedBundle</span> =&gt;</span> rotatedBundle.map(<span class="function"><span class="params">bundle</span> =&gt;</span> mediateBundle(bundle)))</span><br><span class="line">    .map(<span class="function"><span class="params">rotatedBundle</span> =&gt;</span> rotatedBundle.map(<span class="function"><span class="params">bundle</span> =&gt;</span> bundle.flat().join(<span class="string">&#x27;&#x27;</span>)));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> blankBundles = findBundles(game_board, <span class="number">0</span>).map(<span class="function"><span class="params">bundle</span> =&gt;</span></span><br><span class="line">    mediateBundle(bundle).flat().join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> answer = <span class="number">0</span>;</span><br><span class="line">  blankBundles.forEach(<span class="function"><span class="params">bundle</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; blockBundles.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (blockBundles[i].includes(bundle)) &#123;</span><br><span class="line">        blockBundles.splice(i, <span class="number">1</span>);</span><br><span class="line">        answer += <span class="built_in">Math</span>.floor(bundle.length / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/11/CSS-Tricks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/11/CSS-Tricks/" class="post-title-link" itemprop="url">CSS Tricks</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-11 10:51:35 / Modified: 11:12:03" itemprop="dateCreated datePublished" datetime="2021-08-11T10:51:35+09:00">2021-08-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Email-Newsletters/" itemprop="url" rel="index"><span itemprop="name">Email-Newsletters</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="260-미래에-Magic이-될-수도-있는-CSS-Query-Units"><a href="#260-미래에-Magic이-될-수도-있는-CSS-Query-Units" class="headerlink" title="#260 - 미래에 Magic이 될 수도 있는 CSS Query Units"></a><a target="_blank" rel="noopener" href="https://css-tricks.com/newsletter/260-the-maybe-future-magic-of-css-query-units/">#260 - 미래에 Magic이 될 수도 있는 CSS Query Units</a></h2><ul>
-<li></li>
-<li>:fullscreen CSS css pseudo class 와 FullScreen API</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/11/React-Notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/11/React-Notes/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-11 10:24:14 / Modified: 16:16:50" itemprop="dateCreated datePublished" datetime="2021-08-11T10:24:14+09:00">2021-08-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/Plugins-VS-Loaders/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/Plugins-VS-Loaders/" class="post-title-link" itemprop="url">Plugins VS Loaders</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 20:42:57" itemprop="dateCreated datePublished" datetime="2021-08-06T20:42:57+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-11 10:37:25" itemprop="dateModified" datetime="2021-08-11T10:37:25+09:00">2021-08-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-React/" itemprop="url" rel="index"><span itemprop="name">TIL/React</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a><a target="_blank" rel="noopener" href="https://webpack.kr/concepts/#loaders">Loaders</a></h2><ul>
-<li>webpack은 기본적으로 JavaScript와 JSON 파일만 이해한다.</li>
-<li>Loaders를 사용하면 webpack이 다른 유형의 파일을 처리할 수 있다. </li>
-<li>// 또한 다른 유형의 파일들을 유효한 모듈로 변환하여 애플리케이션에서 사용하거나 디펜던시 그래프에 추가한다.</li>
-</ul>
-<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a><a target="_blank" rel="noopener" href="https://webpack.kr/concepts/#plugins">Plugins</a></h2><ul>
-<li>번들을 최적화하거나, 에셋을 관리하고, 또 환경 변수 주입 등과 같은 광범위한 작업을 수행할 수 있다.</li>
-<li>플러그인을 사용하려면 require()를 통해 플러그인을 요청하고 plugins 배열에 추가해야 한다. </li>
-<li>대부분의 플러그인은 옵션을 통해 사용자가 지정할 수 있다.</li>
-<li>webpack은 <a target="_blank" rel="noopener" href="https://webpack.kr/plugins/">설치 없이 사용할 수 있는 플러그인들</a>을 제공한다.</li>
-</ul>
-<h1 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h1><p>Loaders는 다른 유형의 파일을 처리하기 위해,<br>Plugins는 번들 최적화, 에셋 관리, 환경 변수 주입 등 광범위한 작업 수행<br>// 써보면서 추가해야할 듯</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/Singleton-Pattern/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/Singleton-Pattern/" class="post-title-link" itemprop="url">Singleton Pattern</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-06 20:01:39 / Modified: 20:02:01" itemprop="dateCreated datePublished" datetime="2021-08-06T20:01:39+09:00">2021-08-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/%EB%B3%80%EA%B2%BD%EB%90%9C-React-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%A9%EC%8B%9D-%EC%9D%B4%ED%95%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/%EB%B3%80%EA%B2%BD%EB%90%9C-React-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%B0%A9%EC%8B%9D-%EC%9D%B4%ED%95%B4/" class="post-title-link" itemprop="url">변경된 React 이벤트 시스템 방식 이해</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-06 17:28:40 / Modified: 19:34:18" itemprop="dateCreated datePublished" datetime="2021-08-06T17:28:40+09:00">2021-08-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="정리이유"><a href="#정리이유" class="headerlink" title="정리이유"></a>정리이유</h2><p>변경된 리액트 이벤트 시스템 방식이 어떤 이점이 있는지 이해가 가지 않았어서 이해 후 정리.</p>
-<h1 id="변경된-React-이벤트-시스템-방식"><a href="#변경된-React-이벤트-시스템-방식" class="headerlink" title="변경된 React 이벤트 시스템 방식"></a>변경된 React 이벤트 시스템 방식</h1><p><img src="/img/ReactEventMathod/ReactEventMathod.png" alt="변경된 React 이벤트 시스템 방식 @RachelNabors"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root1&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root2&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root3&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root4&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<p>위와 같이 root가 여러 개가 있을 때 각 root에서 다른 버전의 React를 쓰는 경우, 바뀐 방식에서 문제가 개선되었다.</p>
-<h2 id="함께-본-자료"><a href="#함께-본-자료" class="headerlink" title="함께 본 자료"></a>함께 본 자료</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://d2.naver.com/helloworld/7226235">네이버 D2 - 2020년과 이후 JavaScript의 동향 - 라이브러리와 프레임워크 1</a></li>
-<li><a target="_blank" rel="noopener" href="https://yamoo9.notion.site/c512b093391143379e6ab42edb649365">yamoo 강사님 React 수업 - 이벤트 핸들링</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/React%EC%9D%98-%ED%95%A9%EC%84%B1-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9D%B4%EC%A0%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/React%EC%9D%98-%ED%95%A9%EC%84%B1-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9D%B4%EC%A0%90/" class="post-title-link" itemprop="url">React의 합성 이벤트 이점</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-06 17:24:38 / Modified: 19:22:07" itemprop="dateCreated datePublished" datetime="2021-08-06T17:24:38+09:00">2021-08-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-React/" itemprop="url" rel="index"><span itemprop="name">TIL/React</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="React의-합성-이벤트의-이점"><a href="#React의-합성-이벤트의-이점" class="headerlink" title="React의 합성 이벤트의 이점"></a>React의 합성 이벤트의 이점</h1><p>nativeEvent는 브라우저가 제어하는 브라우저의 이벤트이고, 합성 이벤트는 React가 제어하는 React의 이벤트이다.<br>React가 내부적으로 발생할 수 있는 문제들을 해결해주어 크로스브라우징 고려 등 개발자의 입장에서 고려해야할 사항들을 처리해주는 이점이 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/stopPropagation-VS-preventDefault/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/stopPropagation-VS-preventDefault/" class="post-title-link" itemprop="url">stopPropagation() VS preventDefault()</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 16:23:20" itemprop="dateCreated datePublished" datetime="2021-08-06T16:23:20+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-11 10:27:05" itemprop="dateModified" datetime="2021-08-11T10:27:05+09:00">2021-08-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL-JavaScript/" itemprop="url" rel="index"><span itemprop="name">TIL/JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h2><p>뭐가 다른 지 잘 모르겠어서 확실하게 이해하기 위해 정리</p>
-<h2 id="StopPropagation"><a href="#StopPropagation" class="headerlink" title="StopPropagation()"></a>StopPropagation()</h2><p>이벤트 전파를 중지시킨다.</p>
-<h2 id="preventDefault"><a href="#preventDefault" class="headerlink" title="preventDefault()"></a>preventDefault()</h2><p>DOM 요소의 기본 동작을 중지시킨다.<br>예) a 요소를 클릭하면 href 어트리뷰트에 지정된 링크로 이동, checkbox 또는 radio 요소를 클릭하면 체크 또는 해제</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/06/IntersectionObserver-API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/IntersectionObserver-API/" class="post-title-link" itemprop="url">IntersectionObserver API</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 11:18:26" itemprop="dateCreated datePublished" datetime="2021-08-06T11:18:26+09:00">2021-08-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-11 10:38:31" itemprop="dateModified" datetime="2021-08-11T10:38:31+09:00">2021-08-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/naver-fe-news/" itemprop="url" rel="index"><span itemprop="name">naver/fe-news</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="정리-이유"><a href="#정리-이유" class="headerlink" title="정리 이유"></a>정리 이유</h2><p>JADOO Calendar에서 다른 팀원이 달력 무한 스크롤 구현에 사용하여 대략적으로 알고 있으나 자세히 알아두기 위해서</p>
-<h2 id="링크"><a href="#링크" class="headerlink" title="링크"></a>링크</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/naver/fe-news/blob/master/issues/2021-08.md#building-a-dynamic-header-with-intersection-observer">naver/fe-news/2021-08/#building-a-dynamic-header-with-intersection-observer</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2021/07/dynamic-header-intersection-observer/">Intersection Observer로 동적 헤더 만들기 - 210713</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepen.io/michellebarker/pen/QWpzwYN">동적 헤더 구현 코드</a></li>
-<li><a target="_blank" rel="noopener" href="https://codepen.io/michellebarker/full/xxwLpRG">Intersection Observer 범위 시각화 도구</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
 
 
 <script>

@@ -155,13 +155,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -190,6 +190,202 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/05/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/05/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/" class="post-title-link" itemprop="url">디자인 패턴</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-05 12:42:18" itemprop="dateCreated datePublished" datetime="2021-08-05T12:42:18+09:00">2021-08-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-06 20:01:44" itemprop="dateModified" datetime="2021-08-06T20:01:44+09:00">2021-08-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="디자인-패턴"><a href="#디자인-패턴" class="headerlink" title="디자인 패턴"></a>디자인 패턴</h1><p>프로그램 개발에서 <strong>자주 발생하는 문제를 해결하기 위한</strong> 방법 중 하나로, 과거의 소프트웨어 개발 과정에서 발견된 설계의 노하우를 축적하여 이름을 붙여, 이후에 <strong>재사용하기 좋은 형태로 특정의 규약을 묶어서 정리한 해결책</strong><sup><a href="#footnote_1">1</a></sup>    </p>
+<ul>
+<li>“바퀴를 다시 발명하지 마라(Don’t reinvent the wheel)”</li>
+<li>= 이미 만들어져 잘 되는 것을 처음부터 다시 만들 필요가 없다는 뜻</li>
+</ul>
+<h2 id="패턴이란"><a href="#패턴이란" class="headerlink" title="패턴이란?"></a>패턴이란?</h2><p>프로그램 개발에서 설계 문제와 이를 처리하는 해결책에도 공통점이 있는 데 이런 유사점을 패턴이라 한다.</p>
+<h2 id="디자인-패턴-종류"><a href="#디자인-패턴-종류" class="headerlink" title="디자인 패턴 종류"></a>디자인 패턴 종류</h2><p>GoF(Gang of Fout)<sup><a href="#footnote_2">2</a></sup>가 23가지의 디자인 패턴을 정리하고 각각의 디자인 패턴을 생성(Creational), 구조(Structural), 행위(Behavioral) 3가지로 분류했다.</p>
+<h3 id="생성-Creational-패턴"><a href="#생성-Creational-패턴" class="headerlink" title="생성(Creational) 패턴"></a>생성(Creational) 패턴</h3><ul>
+<li>추상 팩토리(Abstract Factory)</li>
+<li>빌더(Builder)</li>
+<li>팩토리 메서드(Factory Methods)</li>
+<li>프로토타입(Prototype)</li>
+<li><a href="Singleton-Pattern.md">싱글턴(Singleton)</a></li>
+</ul>
+<h3 id="구조-Structural-패턴"><a href="#구조-Structural-패턴" class="headerlink" title="구조(Structural) 패턴"></a>구조(Structural) 패턴</h3><ul>
+<li>어댑터(Adapter)</li>
+<li>브리지(Bridge)</li>
+<li>컴퍼지트(Composite)</li>
+<li>데커레이터(Decorator)</li>
+<li>퍼사드(Facade)</li>
+<li>플라이웨이트(Flyweight)</li>
+<li>프록시(Proxy)</li>
+</ul>
+<h3 id="행위-Behavioral-패턴"><a href="#행위-Behavioral-패턴" class="headerlink" title="행위(Behavioral) 패턴"></a>행위(Behavioral) 패턴</h3><ul>
+<li>책임 연쇄(Chain of Responsibility)</li>
+<li>커맨드(Command)</li>
+<li>인터프리트(Interpreter)</li>
+<li>이터레이터(Iterator)</li>
+<li>미디에이터(Mediator)</li>
+<li>메멘토(Memento)</li>
+<li>옵저버(Observer)</li>
+<li>스테이트(State)</li>
+<li>스트래티지(Strategy)</li>
+<li>템플릿 메서드(Template Method)</li>
+<li>비지터(Visitor)</li>
+</ul>
+<hr>
+<p><a name="footnote_1" target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/%EB%94%94%EC%9E%90%EC%9D%B8_%ED%8C%A8%ED%84%B4#cite_note-2">1</a>: 디자인 패턴 정의  - 위키백과<br><a name="footnote_2">2</a>: 에리히 감마(Erich Gamma), 리차드 헬름(Richard Helm), 랄프 존슨(Ralph Johnsom), 존 블리시디스(John Vissides)를 말한다. 소프트웨어 개발 영역에서 디자인 패턴을 구체화하고 체계화한 사람들이다.    </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/08/05/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EB%A7%81%ED%81%AC%EB%93%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyun Jung">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HyunJungC Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/05/%EC%9C%A0%EC%9A%A9%ED%95%9C-%EB%A7%81%ED%81%AC%EB%93%A4/" class="post-title-link" itemprop="url">유용한 링크들</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-05 12:41:33" itemprop="dateCreated datePublished" datetime="2021-08-05T12:41:33+09:00">2021-08-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-06 15:09:02" itemprop="dateModified" datetime="2021-08-06T15:09:02+09:00">2021-08-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ETC/" itemprop="url" rel="index"><span itemprop="name">ETC</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="VScode-유용한-단축키"><a href="#VScode-유용한-단축키" class="headerlink" title="VScode 유용한 단축키"></a><a target="_blank" rel="noopener" href="https://jhnyang.tistory.com/408">VScode 유용한 단축키</a></h2><h2 id="typescript-비공식-한글-번역"><a href="#typescript-비공식-한글-번역" class="headerlink" title="typescript 비공식 한글 번역"></a><a target="_blank" rel="noopener" href="https://typescript-kr.github.io/">typescript 비공식 한글 번역</a></h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -880,185 +1076,6 @@
 <h2 id="오류-해결"><a href="#오류-해결" class="headerlink" title="오류 해결"></a>오류 해결</h2><p>[…document.querySelectorAll()].forEach() 와 같이 NodeList 객체를 배열로 바꿔 배열의 forEach 메서드를 사용해야한다.</p>
 <h2 id="배열로-변환해야하는-더-중요한ㄴ-이유"><a href="#배열로-변환해야하는-더-중요한ㄴ-이유" class="headerlink" title="배열로 변환해야하는 더 중요한ㄴ 이유"></a>배열로 변환해야하는 더 중요한ㄴ 이유</h2><p><a target="_blank" rel="noopener" href="https://hyunjungc-dev.github.io/2021/08/01/HTMLCollection-VS-NodeList/">HTMLCollection 객체와 NodeList 객체는 모두 배열로 변환하여 사용하는 것을 권장한다.</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/22/%EB%93%9C%EB%9E%98%EA%B7%B8%ED%96%88%EC%9D%84-%EB%95%8C-mouseup-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B0%80-%EC%9E%91%EB%8F%99%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EC%9D%B4%EC%9C%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/22/%EB%93%9C%EB%9E%98%EA%B7%B8%ED%96%88%EC%9D%84-%EB%95%8C-mouseup-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EA%B0%80-%EC%9E%91%EB%8F%99%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EC%9D%B4%EC%9C%A0/" class="post-title-link" itemprop="url">드래그했을 때 mouseup 이벤트가 작동하지 않는 이유</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-22 00:56:39" itemprop="dateCreated datePublished" datetime="2021-06-22T00:56:39+09:00">2021-06-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-01 20:35:35" itemprop="dateModified" datetime="2021-08-01T20:35:35+09:00">2021-08-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Project-JaDooCalendar/" itemprop="url" rel="index"><span itemprop="name">Project/JaDooCalendar</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="드래그했을-때-mouseup-이벤트가-작동하지-않는-이유"><a href="#드래그했을-때-mouseup-이벤트가-작동하지-않는-이유" class="headerlink" title="드래그했을 때 mouseup 이벤트가 작동하지 않는 이유"></a>드래그했을 때 mouseup 이벤트가 작동하지 않는 이유</h1><p>요소를 잡아 끌고 놓았을 때는 해당 요소의 mouseup 이벤트가 발생하지 않기 때문이다.<br>즉, <strong>잡아 끌 해당 요소에 mouseup 이벤트를 걸었기 때문</strong>이다.   </p>
-<h2 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h2><p><strong>mouseup 이벤트를 doucment에 걸어주는 것</strong>으로 해결할 수 있다.</p>
-<h2 id="잡아-끌-해당-요소에-mouseup-이벤트를-걸면-안되는-이유"><a href="#잡아-끌-해당-요소에-mouseup-이벤트를-걸면-안되는-이유" class="headerlink" title="잡아 끌 해당 요소에 mouseup 이벤트를 걸면 안되는 이유"></a>잡아 끌 해당 요소에 mouseup 이벤트를 걸면 안되는 이유</h2><h3 id="마우스-왼쪽-클릭-시"><a href="#마우스-왼쪽-클릭-시" class="headerlink" title="마우스 왼쪽 클릭 시"></a>마우스 왼쪽 클릭 시</h3><ol>
-<li>mousedown</li>
-<li>mouseup</li>
-<li>click 이벤트 순으로 발생한다.</li>
-</ol>
-<h3 id="마우스-오른쪽-클릭-시"><a href="#마우스-오른쪽-클릭-시" class="headerlink" title="마우스 오른쪽 클릭 시"></a>마우스 오른쪽 클릭 시</h3><ol>
-<li>mousedown</li>
-<li>mouseup</li>
-<li>contextmenu 이벤트 순으로 발생한다.</li>
-</ol>
-<p>위와 같이 요소 위에서 클릭이 이루어지는 경우엔 마우스 포인터가 움직이지 않으므로 mouseup이벤트를 해당 요소에 걸어도 문제가 없다.  </p>
-<p>하지만 마우스 포인터가 요소를 벗어난 상태에서는 해당 요소에 mouseup 이벤트가 발생할 수 없다. <strong><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_even">mouseup이벤트는 그 순간 마우스 포인터가 있는 곳에서 발생</a>하기 때문</strong>.  </p>
-<h3 id="마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-false면"><a href="#마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-false면" class="headerlink" title="마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable false면"></a>마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable false면</h3><ol>
-<li>mousedown<br>만 일어난다.<br>이미 마우스 포인터가 요소를 벗어난 상태이므로 mouseup과 click은 발생하지 못한다.</li>
-</ol>
-<h3 id="마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-true면"><a href="#마우스-왼쪽-클릭-후-잡아-끄는데-해당-요소가-draggable-true면" class="headerlink" title="마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable true면"></a>마우스 왼쪽 클릭 후 잡아 끄는데 해당 요소가 draggable true면</h3><ol>
-<li>mousedown</li>
-<li>dragend 이벤트 순으로 발생한다.<br>이미 마우스 포인터가 요소를 벗어난 상태이므로 mouseup과 click은 발생하지 못한다.</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyunjungc.dev.github.io/2021/06/21/Drag-and-Drop-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EC%9D%84-%EC%9C%84%ED%95%B4-%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%84%A0%ED%83%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hyun Jung">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HyunJungC Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/21/Drag-and-Drop-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EC%9D%84-%EC%9C%84%ED%95%B4-%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%84%A0%ED%83%9D/" class="post-title-link" itemprop="url">Drag and Drop 기능 구현을 위해 사용할 이벤트 선택</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-21 17:08:33" itemprop="dateCreated datePublished" datetime="2021-06-21T17:08:33+09:00">2021-06-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-06 11:27:33" itemprop="dateModified" datetime="2021-08-06T11:27:33+09:00">2021-08-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Project-JaDooCalendar/" itemprop="url" rel="index"><span itemprop="name">Project/JaDooCalendar</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="HTML-Drag-and-Drop"><a href="#HTML-Drag-and-Drop" class="headerlink" title="HTML Drag and Drop"></a>HTML Drag and Drop</h1><h1 id="Mouse-이벤트"><a href="#Mouse-이벤트" class="headerlink" title="Mouse 이벤트"></a>Mouse 이벤트</h1><h1 id="Pointer-이벤트"><a href="#Pointer-이벤트" class="headerlink" title="Pointer 이벤트"></a>Pointer 이벤트</h1>
       
     </div>
 
